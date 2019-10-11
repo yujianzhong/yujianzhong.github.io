@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>集合小结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="集合框架图分析+++ 框架图 框架简化图 +++  所有的集合类都位于java.util包下, Java的集合类主要是由两个接口派生而来: Collection 和Map, 这两个接口是Java集合框架的根接口, 包含着一些子接口或是实现类  集合接口 : 有6个, 用短虚线表示 , 表示不同集合的类型, 是集合框架 的基础 , 分别为 : ArrayList   LinkedList  Hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合小结">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/集合/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="集合框架图分析+++ 框架图 框架简化图 +++  所有的集合类都位于java.util包下, Java的集合类主要是由两个接口派生而来: Collection 和Map, 这两个接口是Java集合框架的根接口, 包含着一些子接口或是实现类  集合接口 : 有6个, 用短虚线表示 , 表示不同集合的类型, 是集合框架 的基础 , 分别为 : ArrayList   LinkedList  Hash">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122112853268-1919394058.gif">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122113410534-705560500.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201701/249993-20170119151138921-1550766941.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201611/249993-20161123132517440-795442770.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144612442-1195596330.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144843208-531675510.png">
+<meta property="og:updated_time" content="2019-10-11T02:36:03.844Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集合小结">
+<meta name="twitter:description" content="集合框架图分析+++ 框架图 框架简化图 +++  所有的集合类都位于java.util包下, Java的集合类主要是由两个接口派生而来: Collection 和Map, 这两个接口是Java集合框架的根接口, 包含着一些子接口或是实现类  集合接口 : 有6个, 用短虚线表示 , 表示不同集合的类型, 是集合框架 的基础 , 分别为 : ArrayList   LinkedList  Hash">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122112853268-1919394058.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-集合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/19/集合/" class="article-date">
+  <time datetime="2019-09-18T17:40:58.000Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      集合小结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合框架图分析"><a href="#集合框架图分析" class="headerlink" title="集合框架图分析"></a>集合框架图分析</h1><p>+++</p>
+<h2 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h2><p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122112853268-1919394058.gif" alt="集合框架"></p>
+<h2 id="框架简化图"><a href="#框架简化图" class="headerlink" title="框架简化图"></a>框架简化图</h2><p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122113410534-705560500.jpg" alt="框架简化图"></p>
+<p>+++</p>
+<ol>
+<li>所有的集合类都位于java.util包下, Java的集合类主要是由两个接口派生而来: Collection 和Map, 这两个接口是Java集合框架的根接口, 包含着一些子接口或是实现类 </li>
+<li>集合接口 : 有6个, 用短虚线表示 , 表示不同集合的类型, 是集合框架 的基础 , 分别为 : <strong>ArrayList</strong>   <strong>LinkedList</strong>  <strong>HashSet</strong>  <strong>TreeSet</strong>  <strong>HashMap</strong>  <strong>TreeMap</strong> </li>
+<li>抽象类: 有5个, 用长虚线表示 , 是对集合接口的部分实现, 可以扩展为自定义集合类 , 分别为 :  AbstractList  AbstractCollection  AbstractSet  AbstractMap  AbstractMap</li>
+<li>实现类 : 有8个, 用实线表示 , 是接口的具体实现 , 分别为 : LinkedList  ArrayList  Stack  Vector  HashSet  TreeSet  HashMap  TreeMap  </li>
+<li><u>Collection接口是一组允许重复的对象</u></li>
+<li>Set接口继承自Collection, 集合元素不重复</li>
+<li>List接口 继承自Collection, 集合元素无序</li>
+<li>Map接口是键值对形式的对象, 与Collection接口没有什么关系</li>
+<li>Set List Map 可以看成是集合的三大类<ol>
+<li>List集合是有序集合 , 集合中的元素可以重复, 访问集合中的元素可以根据元素的索引来访问</li>
+<li>Set集合是无序集合, 集合中的元素不可以重复, 访问集合中的元素只能根据元素本身来访问. 故而Set集合中元素不允许重复</li>
+<li>Map集合中保存 K-V形式的元素, 访问时只能根据每项元素的key来访问value</li>
+</ol>
+</li>
+</ol>
+<h1 id="总体分析"><a href="#总体分析" class="headerlink" title="总体分析"></a>总体分析</h1><p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170119151138921-1550766941.jpg" alt="框架图"></p>
+<p>根据框架图, 了解到主干是Collecton和Map</p>
+<ol>
+<li>Collection是一个高度抽象出来的集合接口, 包含了集合的基本操作 和属性, 其中有List和Set两大分支<ul>
+<li>List是一个有序队列, 每个元素都有它的索引, 第一个元素的索引值是0, List的实现类有: ArrayList  LinkedList  Vector  Stack</li>
+<li>Set是一个无序队列 , 不允许有重复的元素, 其实现类有: HashSet  TreeSet , HashSet依赖于HashMap, 实际上是通过HashMap实现的, TreeSet依赖于TreeMap, 它的实现 是依赖于TreeMap实现 .</li>
+</ul>
+</li>
+<li>Map是一个映射接口, 即K-V结构, Map中的每一个元素都包含一个key和一个value, AbstractMap是一个抽象类, 它实现了Map接口中大部分的API, 而HashMap, TreeMap, WeakHashMap都是继承自AbstractMap. Hashtable虽然继承自Dictionary, 但是实现了Map接口.<ul>
+<li>Dictionary类是一个抽象类, 它是任何可以将键映射到对应值的类的抽象父类, 和Map类相似,  但是已经过时</li>
+</ul>
+</li>
+<li>Iterator是遍历集合的工具 , Collection依赖于 Iterator, 是因为Collection的实现类都要实现 Iterator()方法, 返回一个Iterator对象, ListIterator是专门为遍历List而存在的.</li>
+<li>在Java的集合中, 与数组类似, 也存在工具类, 即Collections</li>
+</ol>
+<h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><ol>
+<li><p>Collection接口是处理对象集合的根接口, 在此接口中定义了很多对元素进行操作的方法, Collection接口有两个主要的子接口, 分别为List 和Set . <strong>Map并不是Collection的子接口</strong></p>
+</li>
+<li><p>Collection接口的主要方法如下: </p>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161123132517440-795442770.png" alt="Collection接口方法"></p>
+<p>在这里列举几个比较常用的方法, 例如<strong>add()</strong>是添加一个元素到集合中, <strong>addAll()</strong>是将制定集合中的所有元素都添加到当前集合中, <strong>contains()</strong>方法是用来检测集合中是否包含指定的元素 , 而<strong>toArray()</strong>方法返回一个表示集合的数组.</p>
+<p>++++</p>
+<p>需要引起注意的是, 在Collection中有一个Iterator()方法, 它的作用是返回一个Iterator接口, 通常我们需要通过Iterator迭代器来遍历集合. ListIterator是List接口所特有的, 在List接口中, 通过ListIterator()返回一个ListIterator对象.</p>
+</li>
+</ol>
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><ul>
+<li><p>List集合代表一个有序集合, 集合中的每个元素都有其对应的顺序索引, List集合添加重复的元素, 所以可以通过所以来访问指定位置的集合元素</p>
+</li>
+<li><p>List接口继承自Collection接口, 它可以定义一个<strong>允许重复</strong>的<strong>有序</strong>集合, 通过索引访问时类似于数组的下标, 都是从0开始计数 . </p>
+</li>
+<li><p>List接口是Collection的直接接口, List代表的是有序的Collection, 即它是用某种特定的插入顺序来维护元素的顺序, 这样我们就可以对列表中每个元素的插入位置进行准备的控制, 同时也能根据元素的整数索引来访问元素, 同时也可以搜索元素. </p>
+</li>
+<li><p>实现了List接口的集合主要有 : ArrayList, LinkedList, Vector, Stack.</p>
+</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><ul>
+<li>ArrayList可以理解为一个动态的数组, 也是最常用的集合, 它允许任何符合规则的元素插入, 包括null, 每一个ArrayList都有一个初始的容量(10), 这个容量表示动态数组的长度, 随着容器中元素个数的增加, 容器的大小也会动态的进行增加. </li>
+<li>每次添加元素的时候都会进行容量检查, 当超出设置的临界值时就会进行扩容操作, 所以我们在使用中如果明确所插入元素的数额, 可以指定初始容量值, 这样可以避免过多的进行扩容操作而浪费时间, 降低效率.</li>
+<li>size() isEmpty()  get()  set()  iterator()  listIterator()操作都以固定时间运行, 而add()操作是以固定时间运行, 也就是添加n个元素的时间复杂度是O(n) </li>
+</ul>
+<p><strong>ArrayList擅长于随机访问, 同时它是非同步的</strong></p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><ul>
+<li><p>LinkedList也是实现List接口的集合, 只不过它是一个双向链表, 所以它除了ArrayList拥有的基本方法外还有get(), remove(), insert() 等方法.</p>
+</li>
+<li><p>由于与ArrayList的实现方式, LinkedList不支持随机访问, 它的所有操作都要按照双向链表执行, 在列表中索引的操作需要从头或是从尾部开始, 这样好处是可以通过较低的代价在List中进行插入和删除操作. </p>
+</li>
+<li><p>LinkedList和ArrayList一样是非同步的, 所以如果多个线程同时访问一个List, 需要我们去实现访问同步, 一种解决办法是 : 在创建List的时候构造一个同步的List, 如下 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list1 = Collections.synchronizedList(new ArrayList());</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><ul>
+<li>Vector与ArrayList是类似的, 只不过它是同步, 所以Vector是线程安全的动态数组, 其余的操作与ArrayList基本是一样的</li>
+</ul>
+<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><ul>
+<li>Stack继承自Vector,  它实现了一个后进先出的堆栈, 在Stack中提供了5个额外的方法使Vector可以被仿作堆栈使用, 基本的push()和pop()方法, 还有peek()方法获得堆顶的元素, empty()测试堆栈是否为空, search()方法检测某一个元素是否在堆栈中. Stack刚创建时是空栈.</li>
+</ul>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144612442-1195596330.png" alt="List"></p>
+<hr>
+<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><ul>
+<li>Set是一种不包含重复元素的有序的集合, 继承自Collection, 它维持着自己的内部排序, 所以随机访问没有意义, 也就没有实现RandomAccess接口, 与List集合一样, 它允许null的存在且仅限一个. 由于Set接口的特殊性, 所以存入Set集合的元素必须是不同的, 同时要注意在对集合中元素进行相关操作时, 如果出现了两个相同的元素, 则会产生一些问题. Set接口有三个具体的实现类, 分别为: <strong>散列集HashSet</strong>  , <strong>链式散列集LinkedHashSet</strong>  , <strong>树形集TreeSet</strong></li>
+<li>由于Set集合的不重复的特性, 所以任意的两个元素恒有 :  e1.equals(e2) = false</li>
+<li>在Set中最多有一个null元素, 虽然在Set集合中不保持插入顺序, 但是在集合内部由于HashCode使然, 元素的具体位置是固定的</li>
+<li>在Set接口中的不重复元素是有特殊要求的 ; <ul>
+<li>正常的两个元素A.B是可以放置在Set集合中, 但是如果这两个元素都重写了hashCode()和equals(), 并且重写后的这两个方法是相同的话, 那这两个元素就不能同时放在同一个Set集合中了. 所以<strong>Set集合的去重和hashCode()和equals()直接相关</strong> </li>
+<li>有时候会出现包含内容相同的两个不同的对象, 由于默认会重写equals()和hashCode(), 这两个方法会比较对象的内容, 所以会出现添加失败的情况</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><ul>
+<li><p>HashSet是一个没有重复元素的集合, 由HashMap实现, 不保证元素的顺序(此处的顺序是插入顺序和输出的顺序会出现不一直的情况), 而且HashSet允许使用null元素, <strong>HashSet是非同步的</strong>, 如果多个线程同时访问一个HashSet, 而其中至少一个线程修改了该HashSet , 那此集合必须保持外部同步, </p>
+</li>
+<li><p>HashSet是按Hash算法来存储集合的元素的, 因此具有很好的查找和存取性能</p>
+</li>
+<li><p>HashSet 的实现方式如下:</p>
+<ul>
+<li>通过一个HashMap存储元素, 此元素存放在HashMap的key中, 而在Value中统一使用一个Object对象</li>
+</ul>
+</li>
+<li><p>HashSet学习中存在的误区: </p>
+<ul>
+<li><p>HashSet中是可以防止null值的, 但是只能存放一个null值</p>
+</li>
+<li><p>HashSet中存储元素的位置是固定的</p>
+<p>HashSet中存储的元素是无序的, 这个是因为HashSet的底层是基于Hash算法实现的, 所以存放的位置相对是固定的</p>
+</li>
+<li><p>在操作可变变量时, 如果改变元素状态后出现equals()返回true, 将会出现一些问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><ul>
+<li><p>LinkedHashSet继承自HashSet, 底层是基于LinkedHashMap来实现的, 属于有序 / 非同步的.</p>
+</li>
+<li><p>LinkedHashSet也是根据元素的hashCode值来决定元素的存放位置的, 但是它同时使用链表维护元素的次序. 这样可以保证元素是以<strong>插入顺序</strong>保存, 也就是在遍历集合的时候会以添加顺序来访问集合内元素</p>
+</li>
+</ul>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><ul>
+<li><p>TreeSet是一个有序集合, 其底层是基于TreeMap实现的, 是<strong>非线程安全的</strong>.</p>
+</li>
+<li><p>TreeSet可以确保集合元素处于排序状态 , 支持一下两种排序方式</p>
+<ul>
+<li>自然排序(默认)</li>
+<li>定制排序</li>
+</ul>
+<p>如果使用不带参数的构造函数, 则是使用自然比较器, 如果用户需要使用自定义饿比较器, 则要使用带比较器的参数.</p>
+</li>
+<li><p>TreeSet是通过compare或者compareTo来判断元素是否一致, compare通过判断两个对象的id,如果id相同则为重复元素,  不会被加入到集合中</p>
+</li>
+</ul>
+<h2 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h2><p>​    Map集合与List和Set不同, 它是由一系列键值对组成, 提供key到value的映射, 同时它也<strong>没有继承Collection接口</strong>. 在Map中保证了key与value之间的一一对应关系, 所以在Map中不能存在相同的key值, 但是可以有相同的value .</p>
+<hr>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>​    HashMap以哈希表的数据结构实现, 查找对象时通过哈希函数来计算元素的存储位置, 这种结构的设计是为快速查询而设计的, 在集合的内部定义一个hash表数组(Entry[] table), 元素会通过哈希转换函数将元素的哈希地址转换成数组中存放的索引, 如果key出现了冲突, 则使用散列链表的形式将所有相同的哈希地址的元素串起来, 我们可以通过HashMap.Entry的源码来发现它是一个单链表的机构.</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><ul>
+<li>LinkedHashMap是HashMap的一个子类, 它保留插入的顺序, <strong><em>如果需要输出的顺序和输入的顺序一致,就选用LinkedHashMap</em></strong></li>
+<li>LinkedHashMap是Map接口的哈希表+链接列表实现, 具有可预知的迭代顺序, 此实现提供所有可选的映射操作, 并且允许使用null值和null键, 此类不保证映射的顺序, 同时也不保证该顺序恒久不变</li>
+<li>LinkedHashMap的实现与HashMap的不同在于: HashMap维护着一个运行于所有条目的双重链接列表, 此链接列表定义了迭代顺序, 此迭代顺序可以是插入顺序或是访问顺序</li>
+<li>根据链表中元素的顺序可以分为 : 按<strong>插入顺序</strong>的链表和按<strong>访问顺序</strong>的链表(调用get方法), 默认是按照插入顺序排序.  如果指定按访问顺序排序, 那么调用get方法后, 会将这次访问的元素移至链表尾部, 不断访问可以形成按访问顺序排序的链表</li>
+<li>LinkedHashMap是不同步的, 所以在多个线程同时访问时, 如果发生了映射关系的更改, 要进行外部同步操作</li>
+<li><strong>由于LinkedHashMap需要维护元素的插入顺序, 因此性能略微低于HashMap的性能, 但是在迭代访问Map里的全部元素时会有很好的性能, 因为它以链表来维护内部顺序</strong></li>
+</ul>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><ul>
+<li><p>TreeMap是一个<strong>有序的</strong>K-V集合, 非同步, 基于红黑树(Red-Black Tree)实现, 每一个k-v节点作为红黑树的一个结点.</p>
+</li>
+<li><p>TreeMap存储时会进行排序, 根据key的值来对键值对进行排序, 具体的排序方式和TreeSet是一样是分为两种(取决于构造方法) : </p>
+<ul>
+<li>自然排序 : TreeMap中所有的key必须实现<strong>Comparable</strong>接口, 并且所有的key都应该是同一个类的对象, 否则会出现ClassCaseException(类型转换异常)</li>
+<li>定制排序 : 定义TreeMap时, 创建一个Comparator对象, 该对象对所有的TreeMap中所有的key进行排序, 采用定制排序的时候不需要key实现Comparable接口</li>
+<li>TreeMap判断两个元素相等的标准:<ul>
+<li>两个元素的key通过equals()返回为true, 并且通过compareTo()方法返回0 , 说明两个元素相等</li>
+</ul>
+</li>
+<li>如果使用自定义的类作为TreeMap中的key值, 并且想让TreeMap能够良好的工作, 必须<strong>重写自定义类中的equals()方法</strong>,</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144843208-531675510.png" alt="Map总结"></p>
+<h1 id="Iterator与ListIterator详解"><a href="#Iterator与ListIterator详解" class="headerlink" title="Iterator与ListIterator详解"></a>Iterator与ListIterator详解</h1><h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><ul>
+<li><p>Iterator的定义如下 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public interface Iterator&lt;E&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Iterator是一个接口, 它是集合的迭代器, 集合可以通过Iterator去遍历集合中的元素</p>
+</li>
+<li><p>Iterator提供的API接口如下 : </p>
+<ul>
+<li>boolean hasNext() —-&gt;  用来判断集合里是否存在下一个元素, 如果有, 返回true</li>
+<li>Object next()  —-&gt;  返回集合中的下一个元素</li>
+<li>void remove()  —-&gt;  删除集合里上一次next方法返回的元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        List list = new ArrayList();</span><br><span class="line">        list.add(&quot;aaa&quot;);</span><br><span class="line">        list.add(&quot;bbb&quot;);</span><br><span class="line">        list.add(&quot;ccc&quot;);</span><br><span class="line">        System.out.println(&quot;BeforeList&quot; + list);</span><br><span class="line">        Iterator it = list.iterator();</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            String t= (String) it.next();</span><br><span class="line">            if(&quot;bbb&quot;.equals(t))&#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;AfterList&quot; + list);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BeforeList[aaa, bbb, ccc]</span><br><span class="line">AfterList[aaa, ccc]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:</p>
+<ul>
+<li>Iterator只能单方向移动</li>
+<li>Iterator.remove()是唯一安全的方式在迭代过程中修改集合, 如果在迭代过程中以任何其他的方式修改了集合的内容, 会产生未知的结果, </li>
+<li><strong>每调用一次next()方法, remove()只能被调用一次, 否则就会抛出异常</strong></li>
+</ul>
+<h2 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h2><ul>
+<li><p>ListIterator是一个功能更加强大的迭代器, 它继承与Iterator接口, 只能用于各种List类型的访问, 可以通过调用listIterator()方法产生一个指向List开始处的ListIterator,  还可以调用这个方法创建一个一开始就指向集合索引为n的元素出的ListIterator.</p>
+</li>
+<li><p>ListIterator的接口定义如下: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt; &#123;</span><br><span class="line">    boolean hasNext();</span><br><span class="line"> </span><br><span class="line">    E next();</span><br><span class="line"> </span><br><span class="line">    boolean hasPrevious();</span><br><span class="line"> </span><br><span class="line">    E previous();</span><br><span class="line"> </span><br><span class="line">    int nextIndex();</span><br><span class="line"> </span><br><span class="line">    int previousIndex();</span><br><span class="line"> </span><br><span class="line">    void remove();</span><br><span class="line"> </span><br><span class="line">    void set(E e);</span><br><span class="line"> </span><br><span class="line">    void add(E e);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据源码的定义, 我们可以得出 : </p>
+<ul>
+<li>双向移动(向前 / 向后遍历)</li>
+<li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个 元素的索引</li>
+<li>可以使用set()方法替换它访问过的最后一个元素</li>
+<li>可以使用add()方法在next()方法返回的元素之前或是previous()方法返回的元素之后插入一个元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ListIteratorExample &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = new ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(&quot;aaa&quot;);</span><br><span class="line">        a.add(&quot;bbb&quot;);</span><br><span class="line">        a.add(&quot;ccc&quot;);</span><br><span class="line">        System.out.println(&quot;Before iterate : &quot; + a);</span><br><span class="line">        ListIterator&lt;String&gt; it = a.listIterator();</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next() + &quot;, &quot; + it.previousIndex() + &quot;, &quot; + it.nextIndex());</span><br><span class="line">        &#125;</span><br><span class="line">        while (it.hasPrevious()) &#123;</span><br><span class="line">            System.out.print(it.previous() + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        it = a.listIterator(1);</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">            if (&quot;ccc&quot;.equals(t)) &#123;</span><br><span class="line">                it.set(&quot;nnn&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                it.add(&quot;kkk&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;After iterate : &quot; + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before iterate : [aaa, bbb, ccc]</span><br><span class="line">aaa, 0, 1</span><br><span class="line">bbb, 1, 2</span><br><span class="line">ccc, 2, 3</span><br><span class="line">ccc bbb aaa </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">After iterate : [aaa, bbb, kkk, nnn]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="异同点"><a href="#异同点" class="headerlink" title="异同点"></a>异同点</h1><h2 id="ArrayList和LinkedList"><a href="#ArrayList和LinkedList" class="headerlink" title="ArrayList和LinkedList"></a>ArrayList和LinkedList</h2><ol>
+<li>ArrayList是实现了基于动态数组的数据结构, LinkedList基于链表的数据结构</li>
+<li>对于随机访问get和set, ArrayList绝对是优于LinkedList, 因为LinkedList需要移动”指针”</li>
+<li>对于新增和删除操作add()和remove(), LinedList比较占优势 , 因为ArrayList要移动数据<ul>
+<li>这一点也要视具体情况 , 如果只是对单条数据插入或是删除, ArrayList的速度反而优于LinkedList, 但是如果批量随机的插入,删除,  LinkedList的速度是要大大的优于ArrayList, <strong>因为ArrayList每插入一条数据,  都要移动插入点及其以后的数据</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="Hasht和HashMap"><a href="#Hasht和HashMap" class="headerlink" title="Hasht和HashMap"></a>Hasht和HashMap</h2><p>*<em>相同点 : *</em>  </p>
+<ol>
+<li>都实现了Map, Cloneable, java.io.Serializable接口 </li>
+<li>都是存储”键值对”的<strong>散列表</strong>, 而且都是采用散列法实现的</li>
+</ol>
+<p>*<em>不同点 : *</em></p>
+<ol>
+<li><p>历史原因 :  Hashtable是基于陈旧的Dictionary类的, 而HashMap是 java1.2引进的Map接口的一个实现</p>
+</li>
+<li><p>同步性 : Hashtable是线程安全的, 也就是同步的, 而HashMap是线程不安全的, 非同步的</p>
+</li>
+<li><p>对null值的处理:  HashMap的key, value都可以是 null, 凡是Hashtable的key , value都不能为null</p>
+</li>
+<li><p>基类不同 :  HashMap继承自 AbstractMap, 而Hashtable继承自Dictionary</p>
+<blockquote>
+<p>Dictionary是一个抽象类, 它直接继承于Object类, 没有实现任何接口, Dictionary类是 jdk1.0引入的, 同样支持添加”键值对k-v”的内容以及获取大小等 操作, 但是 API比Map少, 而且Dictionary一般是通过Enumeration(枚举器)去遍历, Map则是 通过 Iterator(迭代器)去遍历, 也支持Iterator遍历.</p>
+</blockquote>
+<blockquote>
+<p>AbstractMap是一个抽象类, 它实现了Map接口的绝大部分API函数, 为Map的具体实现类提供能了极大的便利,  它是 jdk1.2新增的类</p>
+</blockquote>
+</li>
+<li><p>支持的遍历种类不同:  HashMap 只支持Iterator(遍历), 而Hashtable支持<strong>迭代器</strong>和<strong>枚举器</strong>两种方式遍历 </p>
+</li>
+</ol>
+<h2 id="HashMap-Hashtable-LinkHashMap-TreeMap"><a href="#HashMap-Hashtable-LinkHashMap-TreeMap" class="headerlink" title="HashMap, Hashtable , LinkHashMap , TreeMap"></a>HashMap, Hashtable , LinkHashMap , TreeMap</h2><ol>
+<li>HashMap是一个最常用的Map, 它根据键的HashCode 值存储数据, 根据键可以直接获取它对应的值, 具有很快的访问速度, 遍历时, 取得数据的顺序完全是随机的, 但是在容器中的存储顺序是有一定规律的. HashMap最多只允许一条记录的健为null, 允许多条记录的值为Null; HashMap不支持线程的同步, 即任一时刻可以有多个线程同时操作HashMap, 所以会导致数据 的不一致, 需要同步操作,  可以使用Collections的synchronizedMap方法使HashMap具有同步的功能.</li>
+<li>Hashtable与HashMap类似, 不同的是 : Hashtable不允许记录的健或是值为null, 它支持线程的同步, 这也导致了Hashtable在写入时会比较慢</li>
+<li>LinkedHashMap保存了记录的插入顺序, 在用 Iterator遍历LinkedHashMap时, 先得到的记录肯定是先插入的, 我们也可以带参构造, 自定义排序. 在遍历的时候会比HashMap慢, 但是当HashMap容量很大, 实际数据比较少时, HashMap在遍历的时候会比LinkedhashMap慢, 因为LinkedHashMap的遍历速度只和实际 数据有关, 与容量无关, 而Hashmap的遍历速度和它的容量是有关系的. <strong>如果需要输出的顺序和输入的相同，那么用 LinkedHashMap 可以实现</strong>,它还可以按照读取顺序来排列, 在连接池中可以应用.LinkedHashMap 实现与 HashMap 的不同之处在于，后者维护着一个运行于所有条目的双重链表。此链接列表定义了迭代顺序，<strong>该迭代顺序可以是插入顺序或者是访问顺序</strong>。对于 LinkedHashMap 而言，它继承与 HashMap、底层使用<strong>哈希表与双向链表来保存所有元素</strong>。其基本操作与父类 HashMap 相似，它通过重写父类相关的方法，来实现自己的链接列表特性。</li>
+<li>LinkedHashMap 实现与 HashMap 的不同之处在于，后者维护着一个运行于所有条目的双重链表。此链接列表定义了迭代顺序，<strong>该迭代顺序可以是插入顺序或者是访问顺序</strong>。对于 LinkedHashMap 而言，它继承与 HashMap、底层使用<strong>哈希表与双向链表来保存所有元素</strong>。其基本操作与父类 HashMap 相似，它通过重写父类相关的方法，来实现自己的链接列表特性。</li>
+<li>一般情况下，我们用的最多的是 HashMap，HashMap 里面存入的键值对在取出的时候是随机的，它根据键的 HashCode 值存储数据，根据键可以直接获取它的值，具有很快的访问速度。在 Map 中插入、删除和定位元素，HashMap 是最好的选择。<pre><code>TreeMap 取出来的是排序后的键值对。但如果您要**按自然顺序或自定义顺序遍历键**，那么 TreeMap 会更好。
+LinkedHashMap 是 HashMap 的一个子类，如果需要**输出的顺序和输入的相同，**那么用 LinkedHashMap 可以实现，它还可以按读取顺序来排列，像连接池中可以应用。 </code></pre></li>
+</ol>
+<h2 id="HashSet-LinkedHashSet-TreeSet"><a href="#HashSet-LinkedHashSet-TreeSet" class="headerlink" title="HashSet , LinkedHashSet,  TreeSet"></a>HashSet , LinkedHashSet,  TreeSet</h2><ol>
+<li><p>Set <strong>不允许包含相同的元素</strong>，如果试图把两个相同元素加入同一个集合中，add 方法返回 false。<br>Set 判断两个对象相同不是使用 == 运算符，而是<strong>根据 equals 方法</strong>。也就是说，只要两个对象用 equals 方法比较返回 true，Set 就不会接受这两个对象。</p>
+</li>
+<li><p>HashSet 有以下特点：<br>-&gt;  不能保证元素的排列顺序，顺序有可能发生变化。<br>-&gt;  不是同步的。<br>-&gt;  集合元素可以是 null，但只能放入一个 null。</p>
+<pre><code>当向 HashSet 结合中存入一个元素时，HashSet 会调用该对象的 hashCode() 方法来得到该对象的 hashCode 值，然后根据 hashCode 值来决定该对象在 HashSet 中存储位置。简单的说，HashSet 集合判断两个元素相等的标准是两个对象通过 equals 方法比较相等，并且两个对象的 hashCode() 方法返回值也相等。
+注意，如果要把一个对象放入 HashSet 中，重写该对象对应类的 equals 方法，也应该重写其 hashCode() 方法。其规则是如果两个对象通过 equals 方法比较返回 true 时，其 hashCode 也应该相同。另外，对象中用作 equals 比较标准的属性，都应该用来计算 hashCode 的值。</code></pre></li>
+<li><p>LinkedHashSet 集合同样是<strong>根据元素的 hashCode 值来决定元素的存储位置</strong>，但是它同时使用链表维护元素的次序。这样使得元素看起来像是以插入顺序保存的，也就是说，当遍历该集合时候，LinkedHashSet 将会以元素的添加顺序访问集合的元素。<br>   LinkedHashSet 在迭代访问 Set 中的全部元素时，<strong>性能比 HashSet 好，但是插入时性能稍微逊色于 HashSet。</strong></p>
+</li>
+<li><p>TreeSet 是 SortedSet 接口的唯一实现类，TreeSet 可以确保集合元素处于排序状态。TreeSet 支持两种排序方式，自然排序和定制排序，其中自然排序为默认的排序方式。向 TreeSet 中加入的应该是同一个类的对象。</p>
+<pre><code>TreeSet 判断两个对象不相等的方式是两个对象通过 equals 方法返回 false，或者通过 CompareTo 方法比较没有返回 0。</code></pre><p>自然排序</p>
+<pre><code>自然排序使用要排序元素的 CompareTo（Object obj）方法来比较元素之间大小关系，然后将元素按照升序排列。
+Java 提供了一个 Comparable 接口，该接口里定义了一个 compareTo(Object obj) 方法，该方法返回一个整数值，实现了该接口的对象就可以比较大小。obj1.compareTo(obj2) 方法如果返回 0，则说明被比较的两个对象相等，如果返回一个正数，则表明 obj1 大于 obj2，如果是负数，则表明 obj1 小于 obj2。如果我们将两个对象的 equals 方法总是返回 true，则这两个对象的 compareTo 方法返回应该返回 0。</code></pre><p>定制排序</p>
+<pre><code>自然排序是根据集合元素的大小，以升序排列，如果要定制排序，应该使用 Comparator 接口，实现 int compare(T o1,T o2) 方法。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package com.yjz.test;  </span><br><span class="line">  </span><br><span class="line">import java.util.HashSet;  </span><br><span class="line">import java.util.LinkedHashSet;  </span><br><span class="line">import java.util.TreeSet;  </span><br><span class="line">  </span><br><span class="line">/**  </span><br><span class="line"> * @description 几个set的比较  </span><br><span class="line"> *    HashSet：哈希表是通过使用称为散列法的机制来存储信息的，元素并没有以某种特定顺序来存放；  </span><br><span class="line"> *    LinkedHashSet：以元素插入的顺序来维护集合的链接表，允许以插入的顺序在集合中迭代；  </span><br><span class="line"> *    TreeSet：提供一个使用树结构存储Set接口的实现，对象以升序顺序存储，访问和遍历的时间很快。  </span><br><span class="line"> * @author Zhou-Jingxian  </span><br><span class="line"> *  </span><br><span class="line"> */  </span><br><span class="line">public class SetDemo &#123;  </span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;  </span><br><span class="line">  </span><br><span class="line">        HashSet&lt;String&gt; hs = new HashSet&lt;String&gt;();  </span><br><span class="line">        hs.add(&quot;B&quot;);  </span><br><span class="line">        hs.add(&quot;A&quot;);  </span><br><span class="line">        hs.add(&quot;D&quot;);  </span><br><span class="line">        hs.add(&quot;E&quot;);  </span><br><span class="line">        hs.add(&quot;C&quot;);  </span><br><span class="line">        hs.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;HashSet 顺序:\n&quot;+hs);  </span><br><span class="line">          </span><br><span class="line">        LinkedHashSet&lt;String&gt; lhs = new LinkedHashSet&lt;String&gt;();  </span><br><span class="line">        lhs.add(&quot;B&quot;);  </span><br><span class="line">        lhs.add(&quot;A&quot;);  </span><br><span class="line">        lhs.add(&quot;D&quot;);  </span><br><span class="line">        lhs.add(&quot;E&quot;);  </span><br><span class="line">        lhs.add(&quot;C&quot;);  </span><br><span class="line">        lhs.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;LinkedHashSet 顺序:\n&quot;+lhs);  </span><br><span class="line">          </span><br><span class="line">        TreeSet&lt;String&gt; ts = new TreeSet&lt;String&gt;();  </span><br><span class="line">        ts.add(&quot;B&quot;);  </span><br><span class="line">        ts.add(&quot;A&quot;);  </span><br><span class="line">        ts.add(&quot;D&quot;);  </span><br><span class="line">        ts.add(&quot;E&quot;);  </span><br><span class="line">        ts.add(&quot;C&quot;);  </span><br><span class="line">        ts.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;TreeSet 顺序:\n&quot;+ts);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashSet 顺序:[D, E, F, A, B, C]</span><br><span class="line">LinkedHashSet 顺序:[B, A, D, E, C, F]</span><br><span class="line">TreeSet 顺序:[A, B, C, D, E, F]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Iterator和ListIterator"><a href="#Iterator和ListIterator" class="headerlink" title="Iterator和ListIterator"></a>Iterator和ListIterator</h2><p>​     我们在使用 List，Set 的时候，为了实现对其数据的遍历，我们经常使用到了 Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List 和 Set 都有 iterator() 来取得其迭代器。对 List 来说，你也可以通过 listIterator() 取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator 和 ListIterator 主要区别在以下方面：</p>
+<ol>
+<li>ListIterator 有 add() 方法，可以向 List 中添加对象，而 Iterator 不能</li>
+<li>ListIterator 和 Iterator 都有 hasNext() 和 next() 方法，可以实现顺序向后遍历，但是 ListIterator 有 hasPrevious() 和 previous() 方法，可以实现逆向（顺序向前）遍历。Iterator 就不可以。</li>
+<li>ListIterator 可以定位当前的索引位置，nextIndex() 和 previousIndex() 可以实现。Iterator 没有此功能。</li>
+<li>都可实现删除对象，但是 ListIterator 可以实现对象的修改，set() 方法可以实现。Iierator 仅能遍历，不能修改。因为 ListIterator 的这些功能，可以实现对 LinkedList 等 List 数据结构的操作。其实，数组对象也可以用迭代器来实现。</li>
+</ol>
+<h2 id="Collection和Collections"><a href="#Collection和Collections" class="headerlink" title="Collection和Collections"></a>Collection和Collections</h2><ol>
+<li><p>java.util.Collection 是一个集合接口（集合类的一个顶级接口）。它提供了对集合对象进行基本操作的通用接口方法。Collection 接口在 Java 类库中有很多具体的实现。Collection 接口的意义是为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有 List 与 Set。</p>
+<p> Collection<br>├List   </p>
+<pre><code>│├LinkedList   
+│├ArrayList   
+│└Vector   
+│　└Stack   </code></pre><p>└Set </p>
+</li>
+<li><p>java.util.Collections 是一个包装类（工具类 / 帮助类）。它包含有各种有关集合操作的<strong>静态多态方法</strong>。此类<strong>不能实例化</strong>，就像一个工具类，用于对集合中元素进行排序、搜索以及线程安全等各种操作，服务于 Java 的 Collection 框架。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList; </span><br><span class="line">import java.util.Collections; </span><br><span class="line">import java.util.List; </span><br><span class="line">  </span><br><span class="line">public class TestCollections &#123; </span><br><span class="line">      </span><br><span class="line">    public static void main(String args[]) &#123; </span><br><span class="line">        //注意List是实现Collection接口的 </span><br><span class="line">        List list = new ArrayList(); </span><br><span class="line">        double array[] = &#123; 112, 111, 23, 456, 231 &#125;; </span><br><span class="line">        for (int i = 0; i &lt; array.length; i++) &#123; </span><br><span class="line">            list.add(new Double(array[i])); </span><br><span class="line">        &#125; </span><br><span class="line">        Collections.sort(list); </span><br><span class="line">        for (int i = 0; i &lt; array.length; i++) &#123; </span><br><span class="line">            System.out.println(list.get(i)); </span><br><span class="line">        &#125; </span><br><span class="line">        // 结果：23.0 111.0 112.0 231.0 456.0 </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="小细节-逐渐补充"><a href="#小细节-逐渐补充" class="headerlink" title="小细节(逐渐补充)"></a>小细节(逐渐补充)</h1><ol>
+<li>在源码的体现中, HashSet继承了Set, Cloneable, Serializable接口, 而在ArrayList比 HashSet多继承了一个RandomAccess接口, 这个接口的官方解释为 : RandomAccess是一个标志接口, 实现这个接口的List集合支持快速随机访问, 同时实现了这个接口的List, 使用for循环的方式获取数据会优于用迭代器获取数据. 经过测试, 两者之间性能的测试差距不是很大, 在数据量不大的情况下, 可以不考虑.</li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/19/集合/" data-id="ck1lio3t80001lwv75z3oqmea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/01/Java多线程小结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java多线程小结
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/01/Java多线程小结/">Java多线程小结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/19/集合/">集合小结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

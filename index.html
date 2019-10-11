@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java多线程小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/01/Java多线程小结/" class="article-date">
+  <time datetime="2019-10-01T15:58:58.000Z" itemprop="datePublished">2019-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/01/Java多线程小结/">Java多线程小结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java多线程小结"><a href="#Java多线程小结" class="headerlink" title="Java多线程小结"></a>Java多线程小结</h1><p>​    线程对象是可以产生线程的对象, 例如Java中的Thread对象, Run那边了对象等</p>
+<p>​    线程, 是指正在执行的一个指令点序列, 在Java中是指一个线程对象的start() 开始, 运行run()方法体中的一段相对独立的过程</p>
+<p>​    相对于<strong>多进程</strong>, <strong>多线程</strong>的优势有如下 : </p>
+<p>​    1&gt; 进程之间不能共享数据, 线程可以</p>
+<p>​    2&gt; 系统创建进程需要为该进程重新分配系统资源, 所以创建线程的代价比较小</p>
+<p>​    3&gt; Java语言平台内置了对多线程的支持, 简化了 Java多线程编程</p>
+<h2 id="线程的创建和启动"><a href="#线程的创建和启动" class="headerlink" title="线程的创建和启动"></a>线程的创建和启动</h2><ol>
+<li><p>继承Thread类创建线程类</p>
+<p>通过继承Thread类创建线程类的具体步骤和具体代码如下: </p>
+<ol>
+<li><p>定义一个继承Thread类的子类, 并重写该类的run()方法</p>
+</li>
+<li><p>创建Thread子类的实例, 即创建线程对象 </p>
+</li>
+<li><p>调用该线程对象的start()方法启动线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Test extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;我是重写的run()方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Test th = new Test();</span><br><span class="line">        th.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>实现Runnable接口创建线程类 </p>
+<p>通过实现Runnable接口创建线程类的具体步骤和代码如下:</p>
+<ol>
+<li><p>定义Runnable接口的实现类, 并重写该接口的run()方法</p>
+</li>
+<li><p>创建Runnable实现类的实例, 并以此实例作为Thread的target对象, 即该Thread对象才是真正的线程对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Test implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;我是重写的run()方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Runnable r = new Test();</span><br><span class="line">        /**</span><br><span class="line">         * 此处存在的问题  : </span><br><span class="line">         *     尽量不要显式的创建线程, 要使用线程池来创建</span><br><span class="line">         *          使用线程池可以避免频繁创建和销毁线程带来的额外的开销, </span><br><span class="line">         *          如果显式的创建, 可能会出现大量同类线程,或是出现&quot;过度切换&quot;的问题</span><br><span class="line">         */</span><br><span class="line">        Thread th = new Thread(r);</span><br><span class="line">        th.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>通过Callable和Future创建线程</p>
+<p>通过Callable和Future创建线程的具体步骤和具体代码如下: </p>
+<ol>
+<li><p>创建Callable接口的实现类, 并实现call()方法, **该call()方法将作为线程执行体, 并且会有返回值</p>
+</li>
+<li><p>创建Callable实现类的实例, 使用FutureTask类来包装Callable对象, 该Future 对象封装了该Callable对象的call()方法的返回值</p>
+</li>
+<li><p>使用FutureTask对象作为Thread对象的target创建并启动新线程</p>
+</li>
+<li><p>调用FutureTask对象的get()方法来获得子线程执行结束后的返回值, 其中Callable接口的定义如下 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Callable&lt;V&gt; &#123;</span><br><span class="line">    V call() throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 创建Callable接口的实现类</span><br><span class="line">public class Test implements Callable &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object call() throws Exception &#123;</span><br><span class="line">        return &quot;我是重写的call()方法&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        // 创建一个类对象</span><br><span class="line">        Callable c = new Test();</span><br><span class="line">        // 由Callable创建一个FutureTask对象</span><br><span class="line">        //注意: FutureTask是一个包装器, 它通过接受Callable来创建, 它实现了RunnableFuture接口,RunnableFuture接口又是继承自Runnable, Future&lt;V&gt; 接口</span><br><span class="line">        FutureTask f = new FutureTask(c);</span><br><span class="line">        // 由FutureTask创建一个Thread对象</span><br><span class="line">        Thread th = new Thread(f);</span><br><span class="line">        // 启动线程</span><br><span class="line">        th.start();</span><br><span class="line">        System.out.println(c.call());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><ol>
+<li><p>新生态</p>
+<p>​    使用new关键字和Thread类或是其子类建立一个线程对象后, 该线程对象就处于新生态, 处于此状态的线程有自己的内存空间, 通过start()进入就绪状态</p>
+<p><strong>注意</strong> : 不能对已经启动的线程再次调用start()方法, 否则会出现java.lang.IllegalThreadStateException异常</p>
+</li>
+<li><p>就绪态</p>
+<p>​    处于就绪态的线程已经是具备了运行的条件, 只是没有分配到cpu, 处于线程就绪队列(虽然是采用队列形似,  但是应该称为可运行池, 而不是可运行队列 , 因为cpu的调度不一定是按照先进先出的顺序来调度的), 等待系统为其分配cpu.  等待状态并不是执行状态, 当系统选定一个等待执行的Thread对象后, 该对象就从等待状态进入执行状态, 系统挑选 的动作称为<strong>“CPU调度”</strong>,  一旦获得CPU, 线程就进入运行状态, 并且自动调用自己的run()方法</p>
+<p><strong>注意</strong> : 如果希望子线程调用 start()方法后立即执行, 可以使用THread.sleep()的方式使主线程休眠,  转去执行子线程.</p>
+</li>
+<li><p>运行态</p>
+<p>​    处于运行态的线程, 可以转变为阻塞态, 就绪态或是死亡态, 所以显得很复杂.</p>
+<p>​    处于就绪态的线程, 如果获得了CPU的时间片, 就会从就绪状态变为运行状态, 执行run()方法中的任务, 直到时间片到了之后就会从运行态变为就绪态, 进入就绪等待队列, 重新等待CPU分配资源. 也可以对正在运行的线程调用yield()方法, 这样它就会让出CPU, 再次变为就绪状态.</p>
+<p>​    线程从运行态变为阻塞态, 发生了如下情况 :</p>
+<p>​    1&gt; 线程调用sleep()方法主动放弃现在占用的系统资源</p>
+<p>​    2&gt; 线程调用一个阻塞式的IO操作, 在该操作完成之前, 线程是被阻塞的</p>
+<p>​    3&gt; 线程试图获得一个同步监听器, 但是更改同步监视器正在被其他线程所持有</p>
+<p>​    4&gt; 线程在等待某个通知(notify)</p>
+<p>​    5&gt;  程序调用了线程的suspend()方法将线程挂起, 不过<strong>该方法容易导致死锁</strong>,  所以尽量不使用此方法</p>
+<p>​    处于运行态的线程, run()方法执行完, 或是被强制终止(出现异常, 或是调用了 stop(), destory()方法等), 就会从运行态变为死亡态.</p>
+</li>
+<li><p>阻塞态</p>
+<p>​    处于运行状态的线程在某些情况下, 如执行了sleep()方法, 或是发起I/O操作, 将会让出CPU并暂时停止自己的运行, 进入阻塞状态</p>
+<p>​    在阻塞状态的线程不能进入就绪队列, 只有引起阻塞的原因消除时, 如睡眠时间到或是I/O操作已完成, 线程才会转为就绪状态, 重新进入到就绪队列中等待, 获得CPU资源后会从原来停止的位置开始继续运行. 有三种 方法可以暂停THreads执行 : </p>
+</li>
+</ol>
+<ol start="5">
+<li><p>死亡态</p>
+<p>​    让线程的run()方法执行完, 或者被强行终止,我们就可以认为线程死亡, 虽然这个线程或许是活的, 但是它已经不是一个单独执行的线程. <strong>线程一旦死亡, 就不能复生</strong>,  如果在一个死去的线程上调用start()方法, 会抛出java.lang.IllegalThreadStateException异常</p>
+</li>
+</ol>
+<h2 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h2><p>​    Java提供一些便捷的方法用于对线程状态的控制, 具体如下: </p>
+<h3 id="线程休眠-—-sleep"><a href="#线程休眠-—-sleep" class="headerlink" title="线程休眠 —  sleep"></a>线程休眠 —  sleep</h3><p>如果我们需要让当前正在执行的线程暂停一段时间, 并且进入阻塞状态, 可以调用Thread的sleep方法实现</p>
+<p><strong>注意</strong> :</p>
+<ol>
+<li><p>sleep()是静态方法, 最好不要使用Thread的实例对象调用, 因为休眠的始终是当前正在运行的线程, 而不是调用它的线程, 它只对正在运行状态的线程对象有效, 如以下实例: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Test  &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">        MyThread myThread = new MyThread();</span><br><span class="line">        myThread.start();</span><br><span class="line">        myThread.sleep(10000);</span><br><span class="line">        Thread.sleep(10);</span><br><span class="line">        for (int i = 0; i &lt;100 ; i++) &#123;</span><br><span class="line">            System.out.println(&quot;main&quot; + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyThread extends Thread&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;我是自定义线程&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在以上代码的运行结果显示中, 首先打印线程名”main” 和”我是自定义线程”, 然后十秒之后进入循环体, 这样说明sleep的是当前线程, 而不是自定义线程</p>
+</blockquote>
+</li>
+<li><p>Java线程调度是Java多线程的核心, 只有良好的调度, 才能充分发挥系统的性能, 提高程序的执行效率. 但是作为程序猿, 不管怎么调度, 只能最大限度的影响线程执行的次序, 并不能做到精确控制, 因为使用了sleep()方法后,, 线程是进入阻塞状态的, 只有睡眠时间结束才会重新进入就绪状态, 而就绪状态进入运行状态是由系统控制, 这个我们是不能精准的干涉的, 所以<strong>当我们使用sleep()进行睡眠时间控制时, 可能会大于我们设定的时间</strong></p>
+</li>
+</ol>
+<h3 id="线程让步-—-yield"><a href="#线程让步-—-yield" class="headerlink" title="线程让步 — yield"></a>线程让步 — yield</h3><p>​    yield()方法和sleep()方法是有点相似的, 它也是 Thread类提供的一个静态的方法, 它也可以让当前正在执行的线程暂停, 让出cpu资源给其他线程, 但是和sleep()方法不同的是: <strong>yield不会使线程进入阻塞状态, 二手进入就绪状态</strong>.  yield ()方法只是让当前线程暂停一下, 重新进入就绪的线程池中, 让系统的线程调度器重新调度一次, 完全有可能在暂停一下后又重新进入到运行状态. </p>
+<p>​    实际上, 当某个线程调用了yield()方法暂停后, 优先级与当前线程相同, 或者优先级比当前线程更高就绪状态的线程更有获得执行机会的肯能, 当然这只是可能, 因为我们无法精确的干涉CPU对线程的调度.  具体的实现如下 : </p>
+<p>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Test  &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       new MyThread(&quot;低级&quot;,1).start();</span><br><span class="line">       new MyThread(&quot;中0级&quot;,5).start();</span><br><span class="line">       new MyThread(&quot;高级&quot;,10).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyThread extends Thread&#123;</span><br><span class="line">    public MyThread(String name , int pro)&#123;</span><br><span class="line">        // 设置线程的名称</span><br><span class="line">        super(name);</span><br><span class="line">        // 设置线程的优先级</span><br><span class="line">        this.setPriority(pro);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 30; i++) &#123;</span><br><span class="line">            System.out.println(this.getName() + &quot;线程第&quot; + i +&quot;次执行&quot;);</span><br><span class="line">            if (i%5 ==0) &#123;</span><br><span class="line">                Thread.yield();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在以上代码的运行中, 经过多次运行, 测试出以下结果 : 低级线程在较低优先级的情况下, 会在中级线程或是高级线程运行中间断性的运行, 说明在暂停后直接进入就绪态, 与中高级线程一样等待系统分配CPU资源</p>
+</blockquote>
+<p><strong>注意</strong>: 关于sleep()与yield()方法的区别 :</p>
+<p>​    1&gt; sleep()方法暂停当前线程后, 会进入阻塞状态, 只要睡眠时间到了, 才会转入就绪状态, 而yield()方法调用后, 在线程暂停后会立即进入就绪状态, 所有存在刚进入就绪状态就变为运行状态的可能</p>
+<p>​    2&gt; sleep()方法显式的抛出了InterruptedException,  所以在调用该方法时要捕获该异常, 或是显式的声明抛出该异常, 而yield()方法没哟抛出任何异常</p>
+<p>​    3&gt; sleep()方法比yield()方法有更好的移植性, <strong>通常不依靠yield()方法来控制并发线程的执行</strong></p>
+<h3 id="线程合并-—-join"><a href="#线程合并-—-join" class="headerlink" title="线程合并  — join"></a>线程合并  — join</h3><p>​    线程合并的含义就是将几个并行的线程合并为一个单线程去执行, 应用场景是: </p>
+<p><strong>当一个线程必须等待另一个线程执行完毕才能执行时</strong>,Thread类提供了join()方法来实现这个功能, 值得注意的是 : join()不是一个静态方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public final void join() throws InterruptedException &#123;</span><br><span class="line">        join(0);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public final synchronized void join(long millis, int nanos)</span><br><span class="line">   throws InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">       if (millis &lt; 0) &#123;</span><br><span class="line">           throw new IllegalArgumentException(&quot;timeout value is negative&quot;);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       if (nanos &lt; 0 || nanos &gt; 999999) &#123;</span><br><span class="line">           throw new IllegalArgumentException(</span><br><span class="line">                               &quot;nanosecond timeout value out of range&quot;);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       if (nanos &gt;= 500000 || (nanos != 0 &amp;&amp; millis == 0)) &#123;</span><br><span class="line">           millis++;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       join(millis);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public final synchronized void join(long millis)</span><br><span class="line">    throws InterruptedException &#123;</span><br><span class="line">        long base = System.currentTimeMillis();</span><br><span class="line">        long now = 0;</span><br><span class="line"></span><br><span class="line">        if (millis &lt; 0) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;timeout value is negative&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (millis == 0) &#123;</span><br><span class="line">            while (isAlive()) &#123;</span><br><span class="line">                wait(0);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            while (isAlive()) &#123;</span><br><span class="line">                long delay = millis - now;</span><br><span class="line">                if (delay &lt;= 0) &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                wait(delay);</span><br><span class="line">                now = System.currentTimeMillis() - base;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由以上的代码可能看出, join()有三个重载的方法, 分别对应不同的形参类型</p>
+</blockquote>
+<h3 id="设置线程的优先级"><a href="#设置线程的优先级" class="headerlink" title="设置线程的优先级"></a>设置线程的优先级</h3><p>​    每个线程执行时都有一个优先级的属性, 优先级高的线程可以获得较多的执行机会, 而优先级低的线程则获得比较少的执行机会, 与线程休眠类似, <strong>线程的优先级仍然无法保证线程的执行次序</strong> , 只不过是优先级高的线程获取CPU资源的概率比较大, 优先级低的线程可能会没有执行的机会</p>
+<p>​    每个线程默认的优先级都与创建它的父线程有相同的优先级, 在默认情况下, main线程具有普通的优先级</p>
+<p>​    <strong>注意</strong> :  THread类提供了setPriority(int newPriority)和getPriority()来设置和返回一个线程指定的优先级, 其中setPriority()方法的参数是一个整数, 范围是1-10之间, 也可以使用Thread类提供的三个<strong>静态常量</strong> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MAX_PRIORITY  = 10	</span><br><span class="line"></span><br><span class="line">MIN_PRIORITY   = 1</span><br><span class="line"></span><br><span class="line">NORM_PRIORITY = 5</span><br></pre></td></tr></table></figure>
+
+<p>​    虽然Java提供了10个优先级别, 但是这些优先级需要操作系统的支持, 不同的操作系统的优先级并不相同, 而且也不能很好的和Java的10个优先级对应, 所以我们应该使用Thread类提供的三个静态常量来设定优先级, 这样才能保证程序具有最好的可移植性.</p>
+<h3 id="后台-守护-线程"><a href="#后台-守护-线程" class="headerlink" title="后台(守护)线程"></a>后台(守护)线程</h3><p>​    守护线程使用的情况是比价少的, 但是仍然有它的用处, 举例来说, JVM的垃圾回收, 内存管理等线程都是守护线程, 而且在做数据库应用的时候, 使用的数据库连接池, 连接池本身也包含着很多后台线程, 监控这连接个数, 超时时间, 状态等, 调用线程对象的方法setDaemon(true), 可以将目标线程设置为守护线程, <strong>守护线程的用途为</strong> : </p>
+<p>​    1&gt; 守护线程通常用于执行一些后台作业, 例如应用程序运行时播放背景音乐, 在文字编辑器里做自动语法检查, 自动保存等功能的实现都与守护线程有关</p>
+<p>​    2&gt; Java的垃圾回收也是一个守护线程, <strong>守护线程的好处是</strong>:用户不需要关心它的结束问题, 例如在播放背景音乐时, 如果当前线程设定为非守护线程, 那用户在请求退出时, 不仅要退出主线程, 还要通知背景音乐播放的线程退出, 但是设置为守护线程就不需要了. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public final void setDaemon(boolean on)        将该线程标记为守护线程或用户线程。当正在运行的线程都是守护线程时，Java 虚拟机退出。    </span><br><span class="line">         该方法必须在启动线程前调用。 该方法首先调用该线程的 checkAccess 方法，且不带任何参数。这可能抛出 SecurityException（在当前线程中）。   </span><br><span class="line">  参数：</span><br><span class="line">     on - 如果为 true，则将该线程标记为守护线程。    </span><br><span class="line">  抛出：    </span><br><span class="line">    IllegalThreadStateException - 如果该线程处于活动状态。    </span><br><span class="line">    SecurityException - 如果当前线程无法修改该线程。</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>: <em>JRE判断程序是否执行结束的标准是所有的前台线程执行完毕了, 而不需要去管后台线程的状态, 因此在使用守护线程时要注意到这个问题</em>.</p>
+<h3 id="正确结束线程"><a href="#正确结束线程" class="headerlink" title="正确结束线程"></a>正确结束线程</h3><p>​    Thread,stop(), Thread.suspend(), Runtime.runFinalizersOnExit() ,  <strong>这些终止线程运行的方法已经别废弃了</strong>, 使用他们是极度不安全的, 所以想要安全有效的结束线程, 可以使用以下方法 :</p>
+<p>​        1&gt; 正常执行完run()方法, 然后结束掉</p>
+<p>​        2&gt; 控制循环条件和判断条件的标识符来结束掉线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Test extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        int i = 0;</span><br><span class="line">        boolean next = true;</span><br><span class="line">        while(next)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            next = false;</span><br><span class="line">            i++;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        new Test().run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上代码的结果为 0 1 , 根据结果我们可以看出经过一次判断后run()方法执行完毕, 线程正常技术</p>
+</blockquote>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>​    Java允许多线程并发控制, 当多个线程同时操作一个可共享的资源变量时(如数据的增删改查), 将会导致数据不准确, 相互之间产生冲突, 因此加入同步锁以避免在该线程没有完成操作之前被其他线程调用, 从而保证了该变量的唯一性和准确性.</p>
+<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><p>​    即使用synchronized关键字修饰的方法, <strong>由于java的每个对象都有一个内置锁,</strong>, 当用此关键字修饰方法时, 内置锁会保护整个方法, 在调用该方法前, 需要获得内置锁, 否则线程会处于闭塞状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void save()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步代码快"><a href="#同步代码快" class="headerlink" title="同步代码快"></a>同步代码快</h3><p>​    即使用synchronized关键字修饰的语句块, 被该关键字修饰的语句块会自动被加上内置锁, 从而实现同步.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Bank &#123;  </span><br><span class="line">     </span><br><span class="line">        private int count =0;// 账户余额  </span><br><span class="line">     </span><br><span class="line">        // 存钱  </span><br><span class="line">        public   void addMoney(int money)&#123;  </span><br><span class="line">     </span><br><span class="line">            synchronized (this) &#123;  </span><br><span class="line">                count +=money;  </span><br><span class="line">            &#125;  </span><br><span class="line">            System.out.println(System.currentTimeMillis()+&quot;存进：&quot;+money);  </span><br><span class="line">        &#125;  </span><br><span class="line">     </span><br><span class="line">        // 取钱  </span><br><span class="line">        public   void subMoney(int money)&#123;  </span><br><span class="line">     </span><br><span class="line">            synchronized (this) &#123;  </span><br><span class="line">                if(count-money &lt; 0)&#123;  </span><br><span class="line">                    System.out.println(&quot;余额不足&quot;);  </span><br><span class="line">                    return;  </span><br><span class="line">                &#125;  </span><br><span class="line">                count -=money;  </span><br><span class="line">            &#125;  </span><br><span class="line">            System.out.println(+System.currentTimeMillis()+&quot;取出：&quot;+money);  </span><br><span class="line">        &#125;  </span><br><span class="line">     </span><br><span class="line">        // 查询  </span><br><span class="line">        public void lookMoney()&#123;  </span><br><span class="line">            System.out.println(&quot;账户余额：&quot;+count);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong> : 同步是一种高开销的操作, 因此应该尽量减少同步的内容, 通常没有必要同步整个方法, 使用synchronized代码块同步关键代码即可.</p>
+<h3 id="使用特殊域变量-volatile-实现线程同步"><a href="#使用特殊域变量-volatile-实现线程同步" class="headerlink" title="使用特殊域变量(volatile)实现线程同步"></a>使用特殊域变量(volatile)实现线程同步</h3><ul>
+<li><p>volatile关键字为域变量的访问提供了一种免锁机制</p>
+</li>
+<li><p>使用volatile修饰域相当于告诉Java虚拟机该域可能会被其他线程更新</p>
+</li>
+<li><p>每次使用该域时都要重新计算, 而不是使用寄存器中的值</p>
+</li>
+<li><p>volatile不会提供任何原子操作, 它也不能用来修饰final类型的变量</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">public class SynchronizedThread &#123;</span><br><span class="line"> </span><br><span class="line">        class Bank &#123;</span><br><span class="line"> </span><br><span class="line">            private volatile int account = 100;</span><br><span class="line"> </span><br><span class="line">            public int getAccount() &#123;</span><br><span class="line">                return account;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            /**</span><br><span class="line">             * 用同步方法实现</span><br><span class="line">             * </span><br><span class="line">             * @param money</span><br><span class="line">             */</span><br><span class="line">            public synchronized void save(int money) &#123;</span><br><span class="line">                account += money;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            /**</span><br><span class="line">             * 用同步代码块实现</span><br><span class="line">             * </span><br><span class="line">             * @param money</span><br><span class="line">             */</span><br><span class="line">            public void save1(int money) &#123;</span><br><span class="line">                synchronized (this) &#123;</span><br><span class="line">                    account += money;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        class NewThread implements Runnable &#123;</span><br><span class="line">            private Bank bank;</span><br><span class="line"> </span><br><span class="line">            public NewThread(Bank bank) &#123;</span><br><span class="line">                this.bank = bank;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">                    // bank.save1(10);</span><br><span class="line">                    bank.save(10);</span><br><span class="line">                    System.out.println(i + &quot;账户余额为：&quot; +bank.getAccount());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        /**</span><br><span class="line">         * 建立线程，调用内部类</span><br><span class="line">         */</span><br><span class="line">        public void useThread() &#123;</span><br><span class="line">            Bank bank = new Bank();</span><br><span class="line">            NewThread new_thread = new NewThread(bank);</span><br><span class="line">            System.out.println(&quot;线程1&quot;);</span><br><span class="line">            Thread thread1 = new Thread(new_thread);</span><br><span class="line">            thread1.start();</span><br><span class="line">            System.out.println(&quot;线程2&quot;);</span><br><span class="line">            Thread thread2 = new Thread(new_thread);</span><br><span class="line">            thread2.start();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public static void main(String[] args) &#123;</span><br><span class="line">            SynchronizedThread st = new SynchronizedThread();</span><br><span class="line">            st.useThread();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>: 多线程的非同步问题主要是出现在对域的读写上, 如果让域自身避免这个问题, 则就不需要修改操作该域的方法, 有final域,有锁保护的域和volatile域可以避免非同步的问题</p>
+<h3 id="使用重入锁-Lock-实现线程同步"><a href="#使用重入锁-Lock-实现线程同步" class="headerlink" title="使用重入锁(Lock)实现线程同步"></a>使用重入锁(Lock)实现线程同步</h3><p>​    在Java1.5时新增了java.util.concurrent包来支持同步,  ReentrantLock类是<strong>可重入,互斥,实现了Lock接口</strong>的锁, 它与使用synchronized方法和代码块具有相同的基本行为和语义 , 并且扩展了其能力, ReenreantLock类的常用方法有 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReentrantLock() : 创建一个ReentrantLock实例         </span><br><span class="line"> lock() : 获得锁        </span><br><span class="line"> unlock() : 释放锁</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意* :</strong> ReentrantLock()还有一个可以创建公平锁的构造方法, 但是会大幅度的降低效率, 所以不推荐使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//只给出要修改的代码，其余代码与上同</span><br><span class="line">        class Bank &#123;</span><br><span class="line">            </span><br><span class="line">            private int account = 100;</span><br><span class="line">            //需要声明这个锁</span><br><span class="line">            private Lock lock = new ReentrantLock();</span><br><span class="line">            public int getAccount() &#123;</span><br><span class="line">                return account;</span><br><span class="line">            &#125;</span><br><span class="line">            //这里不再需要synchronized </span><br><span class="line">            public void save(int money) &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                try&#123;</span><br><span class="line">                    account += money;</span><br><span class="line">                &#125;finally&#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        ｝</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h2><h3 id="借助于Object类提供的wait-notify-和notifyAll-实现通信"><a href="#借助于Object类提供的wait-notify-和notifyAll-实现通信" class="headerlink" title="借助于Object类提供的wait(), notify(),和notifyAll()实现通信"></a>借助于Object类提供的wait(), notify(),和notifyAll()实现通信</h3><p>​    线程执行wait()后, 就放弃了运行资格, 处于冻结状态</p>
+<p>​    线程运行时, 内存中会建立一个线程池, 冻结状态的线程都存在于线程池中, notify()执行时唤醒的也是线程池中的线程, <strong>线程池中有多个线程时唤醒第一个冻结的线程</strong></p>
+<p>​    notifyAll()可以唤醒 线程池中所有的线程</p>
+<p><strong>注意:</strong></p>
+<ul>
+<li>wait(), notify(), notifyAll()都用在同步里面, 因为这3个方法是<strong>对持有锁的</strong>线程进行操作, 而只有同步才有锁, 所以要使用在同步中</li>
+<li>wait(), notify(), notifyAll(), 在使用时必须标识他们所操作的线程所持有的锁, 因为等待和唤醒必须是同一锁下的线程, 而锁可以是任意对象, 所以这3个方法都是Object类中提供的方法.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class Resource&#123;  //生产者和消费者都要操作的资源  </span><br><span class="line">    private String name;  </span><br><span class="line">    private int count=1;  </span><br><span class="line">    private boolean flag=false;  </span><br><span class="line">    public synchronized void set(String name)&#123;  </span><br><span class="line">        if(flag)  </span><br><span class="line">            try&#123;wait();&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">        this.name=name+&quot;---&quot;+count++;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+&quot;...生产者...&quot;+this.name);  </span><br><span class="line">        flag=true;  </span><br><span class="line">        this.notify();  </span><br><span class="line">    &#125;  </span><br><span class="line">    public synchronized void out()&#123;  </span><br><span class="line">        if(!flag)  </span><br><span class="line">            try&#123;wait();&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+&quot;...消费者...&quot;+this.name);  </span><br><span class="line">        flag=false;  </span><br><span class="line">        this.notify();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">class Producer implements Runnable&#123;  </span><br><span class="line">    private Resource res;  </span><br><span class="line">    Producer(Resource res)&#123;  </span><br><span class="line">        this.res=res;  </span><br><span class="line">    &#125;  </span><br><span class="line">    public void run()&#123;  </span><br><span class="line">        while(true)&#123;  </span><br><span class="line">            res.set(&quot;商品&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">class Consumer implements Runnable&#123;  </span><br><span class="line">    private Resource res;  </span><br><span class="line">    Consumer(Resource res)&#123;  </span><br><span class="line">        this.res=res;  </span><br><span class="line">    &#125;  </span><br><span class="line">    public void run()&#123;  </span><br><span class="line">        while(true)&#123;  </span><br><span class="line">            res.out();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">public class ProducerConsumerDemo&#123;  </span><br><span class="line">    public static void main(String[] args)&#123;  </span><br><span class="line">        Resource r=new Resource();  </span><br><span class="line">        Producer pro=new Producer(r);  </span><br><span class="line">        Consumer con=new Consumer(r);  </span><br><span class="line">        Thread t1=new Thread(pro);  </span><br><span class="line">        Thread t2=new Thread(con);  </span><br><span class="line">        t1.start();  </span><br><span class="line">        t2.start();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;//运行结果正常，生产者生产一个商品，紧接着消费者消费一个商品。</span><br></pre></td></tr></table></figure>
+
+<p>​    如果存在多个生产者和消费者, 以上代码是有小瑕疵的, 比如2个生产者, 2个消费者, 运行结果中就有可能出现生产一个商品却有两次消费, 或是连续生产2个个而只消费一次. 这是因为**此种情况下共有4个线程在 操作Resource对象, 而notify()唤醒的是线程池中第一个 wait()的线程, 所以生产者在执行notify()时, 唤醒的可能是另一个生产者线程, 这个线程醒来后不会再判断flag, 而是直接运行进行生产, 这样就会出现连续的2个商品, 所以代码做出以下修改 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Resource&#123;  </span><br><span class="line">        private String name;  </span><br><span class="line">        private int count=1;  </span><br><span class="line">        private boolean flag=false;  </span><br><span class="line">        public synchronized void set(String name)&#123;  </span><br><span class="line">            while(flag) /*原先是if,现在改成while，这样生产者线程从冻结状态醒来时，还会再判断flag.*/  </span><br><span class="line">                try&#123;wait();&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">            this.name=name+&quot;---&quot;+count++;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;...生产者...&quot;+this.name);  </span><br><span class="line">            flag=true;  </span><br><span class="line">            this.notifyAll();/*原先是notity(), 现在改成notifyAll(),这样生产者线程生产完一个商品后可以将等待中的消费者线程唤醒，否则只将上面改成while后，可能出现所有生产者和消费者都在wait()的情况。*/  </span><br><span class="line">        &#125;  </span><br><span class="line">        public synchronized void out()&#123;  </span><br><span class="line">            while(!flag) /*原先是if,现在改成while，这样消费者线程从冻结状态醒来时，还会再判断flag.*/  </span><br><span class="line">                try&#123;wait();&#125;catch(Exception e)&#123;&#125;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;...消费者...&quot;+this.name);  </span><br><span class="line">            flag=false;  </span><br><span class="line">            this.notifyAll(); /*原先是notity(), 现在改成notifyAll(),这样消费者线程消费完一个商品后可以将等待中的生产者线程唤醒，否则只将上面改成while后，可能出现所有生产者和消费者都在wait()的情况。*/  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    public class ProducerConsumerDemo&#123;  </span><br><span class="line">        public static void main(String[] args)&#123;  </span><br><span class="line">            Resource r=new Resource();  </span><br><span class="line">            Producer pro=new Producer(r);  </span><br><span class="line">            Consumer con=new Consumer(r);  </span><br><span class="line">            Thread t1=new Thread(pro);  </span><br><span class="line">            Thread t2=new Thread(con);  </span><br><span class="line">            Thread t3=new Thread(pro);  </span><br><span class="line">            Thread t4=new Thread(con);  </span><br><span class="line">            t1.start();  </span><br><span class="line">            t2.start();  </span><br><span class="line">            t3.start();  </span><br><span class="line">            t4.start();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Condition控制线程通信"><a href="#使用Condition控制线程通信" class="headerlink" title="使用Condition控制线程通信"></a>使用Condition控制线程通信</h3><p>​    在jdk1.5中, 提供了多线程的升级解决方案为 : </p>
+<p>​        1&gt; 将同步synchronized替换为显式的Lock操作</p>
+<p>​        2&gt; 将Object类中的wait(), notify(),notifyAll()替换成Condition对象, 该对象可以通过Lock锁对象获取</p>
+<p>​        3&gt; 一个Lock对象上 可以绑定多个Condition对象, 这样 实现了一方线程只唤醒另一方线程, 而在 jdk1.5之前, 一个同步只能有一个锁, 不同的同步只能用锁来区分, 而且锁嵌套极度容易出现<strong>死锁</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Resource&#123;  </span><br><span class="line">        private String name;  </span><br><span class="line">        private int count=1;  </span><br><span class="line">        private boolean flag=false;  </span><br><span class="line">        private Lock lock = new ReentrantLock();/*Lock是一个接口，ReentrantLock是该接口的一个直接子类。*/  </span><br><span class="line">        private Condition condition_pro=lock.newCondition(); /*创建代表生产者方面的Condition对象*/  </span><br><span class="line">        private Condition condition_con=lock.newCondition(); /*使用同一个锁，创建代表消费者方面的Condition对象*/  </span><br><span class="line">          </span><br><span class="line">        public void set(String name)&#123;  </span><br><span class="line">            lock.lock();//锁住此语句与lock.unlock()之间的代码  </span><br><span class="line">            try&#123;  </span><br><span class="line">                while(flag)  </span><br><span class="line">                    condition_pro.await(); //生产者线程在conndition_pro对象上等待  </span><br><span class="line">                this.name=name+&quot;---&quot;+count++;  </span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;...生产者...&quot;+this.name);  </span><br><span class="line">                flag=true;  </span><br><span class="line">                 condition_con.signalAll();  </span><br><span class="line">            &#125;  </span><br><span class="line">            finally&#123;  </span><br><span class="line">                lock.unlock(); //unlock()要放在finally块中。  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        public void out()&#123;  </span><br><span class="line">            lock.lock(); //锁住此语句与lock.unlock()之间的代码  </span><br><span class="line">            try&#123;  </span><br><span class="line">                while(!flag)  </span><br><span class="line">                    condition_con.await(); //消费者线程在conndition_con对象上等待  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;...消费者...&quot;+this.name);  </span><br><span class="line">            flag=false;  </span><br><span class="line">            condition_pro.signqlAll(); /*唤醒所有在condition_pro对象下等待的线程，也就是唤醒所有生产者线程*/  </span><br><span class="line">            &#125;  </span><br><span class="line">            finally&#123;  </span><br><span class="line">                lock.unlock();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用阻塞队列-BlockingQueue-控制线程通信"><a href="#使用阻塞队列-BlockingQueue-控制线程通信" class="headerlink" title="使用阻塞队列(BlockingQueue)控制线程通信"></a>使用阻塞队列(BlockingQueue)控制线程通信</h3><ul>
+<li><p>BlockingQueue是一个接口, 也是Queue 的子接口, BlockingQueue具有一个特征: 当生产者线程试图向BlockingQUeue中放入元素时, <strong>如果该队列已满, 则线程被阻塞</strong>, 但消费者线程试图从BlockingQueue中取出元素时, <strong>如果队列已空, 则该线程阻塞</strong>, 程序的两个线程通过交替向BlockingQueue中放入和取出元素 , 可以很好的控制线程的通信.</p>
+</li>
+<li><p>BlockingQueue提供如下两个支持阻塞的方法 : </p>
+</li>
+</ul>
+<p>​    1&gt; put(E e) : 尝试把Eu元素放入BlockingQueue中, 如果该队列的元素已满, 则阻塞该线程</p>
+<p>​    2&gt; take() : 尝试从BlockingQueue的头部取出元素, 如果该队列的元素已空, 则阻塞该线程</p>
+<ul>
+<li><strong>BlockingQueue继承了Queue接口</strong>, 所以也可以使用Queue接口中的方法, 这些方法归纳起来可以分为以下三组 :</li>
+</ul>
+<p>​    1&gt; 在队列尾部插入元素, 包括add(E e) , offer(E e), put(E e)方法, 当该队列已满时, 这三个方法分别会抛出异常, 返回false, 阻塞队列</p>
+<p>​    2&gt; 在队列头部删除并返回删除的元素, 包括remove(), poll(),  take()方法, 当该队列已空时, 这三个方法分别会抛出异常, 返回false, 阻塞队列</p>
+<p>​    3&gt; 在队列头部取出但不删除元素, 包括element()和peek()方法, 当队列已空时, 这两个方法分别抛出异常, 返回false.</p>
+<ul>
+<li><p>BlockingQueue接口包含以下五个实现类: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ArrayBlockingQueue ：基于数组实现的BlockingQueue队列。</span><br><span class="line"></span><br><span class="line">LinkedBlockingQueue：基于链表实现的BlockingQueue队列。</span><br><span class="line"></span><br><span class="line">PriorityBlockingQueue：它并不是保准的阻塞队列，该队列调用remove（）、poll（）、take（）等方法提取出元素时，并不是取出队列中存在时间最长的元素，而是队列中最小的元素。</span><br><span class="line">                       它判断元素的大小即可根据元素（实现Comparable接口）的本身大小来自然排序，也可使用Comparator进行定制排序。</span><br><span class="line"></span><br><span class="line">SynchronousQueue：同步队列。对该队列的存、取操作必须交替进行。</span><br><span class="line"></span><br><span class="line">DelayQueue：它是一个特殊的BlockingQueue，底层基于PriorityBlockingQueue实现，不过，DelayQueue要求集合元素都实现Delay接口（该接口里只有一个long getDelay（）方法），</span><br><span class="line">            DelayQueue根据集合元素的getDalay（）方法的返回值进行排序。</span><br></pre></td></tr></table></figure>
+
+<p>案例: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">import java.util.concurrent.ArrayBlockingQueue;</span><br><span class="line"> 2 import java.util.concurrent.BlockingQueue;</span><br><span class="line"> 3 public class BlockingQueueTest&#123;</span><br><span class="line"> 4     public static void main(String[] args)throws Exception&#123;</span><br><span class="line"> 5         //创建一个容量为1的BlockingQueue</span><br><span class="line"> 6         </span><br><span class="line"> 7         BlockingQueue&lt;String&gt; b=new ArrayBlockingQueue&lt;&gt;(1);</span><br><span class="line"> 8         //启动3个生产者线程</span><br><span class="line"> 9         new Producer(b).start();</span><br><span class="line">10         new Producer(b).start();</span><br><span class="line">11         new Producer(b).start();</span><br><span class="line">12         //启动一个消费者线程</span><br><span class="line">13         new Consumer(b).start();</span><br><span class="line">14         </span><br><span class="line">15     &#125;</span><br><span class="line">16 &#125;</span><br><span class="line">17 class Producer extends Thread&#123;</span><br><span class="line">18     private BlockingQueue&lt;String&gt; b;</span><br><span class="line">19     </span><br><span class="line">20     public Producer(BlockingQueue&lt;String&gt; b)&#123;</span><br><span class="line">21         this.b=b;</span><br><span class="line">22         </span><br><span class="line">23     &#125;</span><br><span class="line">24     public synchronized void run()&#123;</span><br><span class="line">25         String [] str=new String[]&#123;</span><br><span class="line">26             &quot;java&quot;,</span><br><span class="line">27             &quot;struts&quot;,</span><br><span class="line">28             &quot;Spring&quot;</span><br><span class="line">29         &#125;;</span><br><span class="line">30         for(int i=0;i&lt;9999999;i++)&#123;</span><br><span class="line">31             System.out.println(getName()+&quot;生产者准备生产集合元素！&quot;);</span><br><span class="line">32             try&#123;</span><br><span class="line">33             </span><br><span class="line">34                 b.put(str[i%3]);</span><br><span class="line">35                 sleep(1000);</span><br><span class="line">36                 //尝试放入元素，如果队列已满，则线程被阻塞</span><br><span class="line">37                 </span><br><span class="line">38             &#125;catch(Exception e)&#123;System.out.println(e);&#125;</span><br><span class="line">39             System.out.println(getName()+&quot;生产完成：&quot;+b);</span><br><span class="line">40         &#125;</span><br><span class="line">41         </span><br><span class="line">42     &#125;</span><br><span class="line">43 &#125;</span><br><span class="line">44 class Consumer extends Thread&#123;</span><br><span class="line">45     private BlockingQueue&lt;String&gt; b;</span><br><span class="line">46     public Consumer(BlockingQueue&lt;String&gt; b)&#123;</span><br><span class="line">47         this.b=b;</span><br><span class="line">48     &#125;</span><br><span class="line">49     public  synchronized  void run()&#123;</span><br><span class="line">50     </span><br><span class="line">51         while(true)&#123;</span><br><span class="line">52             System.out.println(getName()+&quot;消费者准备消费集合元素！&quot;);</span><br><span class="line">53             try&#123;</span><br><span class="line">54                 sleep(1000);</span><br><span class="line">55                 //尝试取出元素，如果队列已空，则线程被阻塞</span><br><span class="line">56                 b.take();</span><br><span class="line">57             &#125;catch(Exception e)&#123;System.out.println(e);&#125;</span><br><span class="line">58             System.out.println(getName()+&quot;消费完：&quot;+b);</span><br><span class="line">59         &#125;</span><br><span class="line">60     </span><br><span class="line">61     &#125;</span><br><span class="line">62 &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>​    合理的使用线程池能够带来以下三个好处 : </p>
+<p>​    1&gt; 降低资源消耗, 通过重复利用已经创建的线程降低线程创建和销毁造成的销毁</p>
+<p>​    2&gt; 提高响应速度, 当任务到达时, 任务可以不需要等到线程创建就能立即执行</p>
+<p>​    3&gt;提高线程的可管理性, 线程是稀缺资源, 如果无限制的创建, 不仅会消耗系统资源,  还会降低系统的稳定性, 使用线程池可以进行统一的分配, 调优和监控</p>
+<h3 id="使用Executors工厂类产生线程池"><a href="#使用Executors工厂类产生线程池" class="headerlink" title="使用Executors工厂类产生线程池"></a>使用Executors工厂类产生线程池</h3><p>​    Executor线程池框架的最大优点是把任务的提交和执行解耦, 客户端将要执行的任务封装成Task, 然后提交即可, 而Task 如果执行对于客户端来说是透明的, 具体的说就是提交一个Callable对象给ExecutorService(如最常用的线程池ThreadPoolExecutor), 将得到一个Future对象, 调用Future对象的get方法等待执行结果, 线程池实现原理类结构图如下:       <img src="http://www.uml-diagrams.org/examples/java-7-concurrent-executors-uml-class-diagram-example.png" alt></p>
+<p>​    <strong>ExecutorService</strong> 是 <a href="http://lib.csdn.net/base/17" target="_blank" rel="noopener">Java</a> 中对线程池定义的一个接口，它<code>java.util.concurrent</code>包中。  Java API 对 ExecutorService 接口的实现有两个，所以这两个即是 Java 线程池具体实现类如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ThreadPoolExecutor</span><br><span class="line">ScheduledThreadPoolExecutor</span><br></pre></td></tr></table></figure>
+
+<p>​    除此之外，ExecutorService 还继承了<code>Executor</code>接口（注意区分 Executor 接口和 Executors 工厂类），这个接口只有一个<code>execute()</code>方法，最后我们看一下整个继承树：</p>
+<p>​    使用 Executors 执行多线程任务的步骤如下：</p>
+<p>  • 调用 Executors 类的静态工厂方法创建一个 ExecutorService 对象，该对象代表一个线程池；</p>
+<p>  • 创建 Runnable 实现类或 Callable 实现类的实例，作为线程执行任务；</p>
+<p>  • 调用 ExecutorService 对象的 submit() 方法来提交 Runnable 实例或 Callable 实例；</p>
+<p>  • 当不想提交任务时，调用 ExecutorService 对象的 shutdown() 方法来关闭线程池。                                                                 </p>
+<p><strong>（1）使用 Executors 的静态工厂类创建线程池的方法如下：</strong></p>
+<p>1、newFixedThreadPool() ：<br>     作用：该方法返回一个固定线程数量的线程池，该线程池中的线程数量始终不变，即不会再创建新的线程，也不会销毁已经创建好的线程，自始自终都是那几个固定的线程在工作，所以该线程池可以控制线程的最大并发数。<br>栗子：假如有一个新任务提交时，线程池中如果有空闲的线程则立即使用空闲线程来处理任务，如果没有，则会把这个新任务存在一个任务队列中，一旦有线程空闲了，则按 FIFO 方式处理任务队列中的任务。<br>2、newCachedThreadPool() ：<br>     作用：该方法返回一个可以根据实际情况调整线程池中线程的数量的线程池。即该线程池中的线程数量不确定，是根据实际情况动态调整的。<br>栗子：假如该线程池中的所有线程都正在工作，而此时有新任务提交，那么将会创建新的线程去处理该任务，而此时假如之前有一些线程完成了任务，现在又有新任务提交，那么将不会创建新线程去处理，而是复用空闲的线程去处理新任务。那么此时有人有疑问了，那这样来说该线程池的线程岂不是会越集越多？其实并不会，因为线程池中的线程都有一个 “保持活动时间” 的参数，通过配置它，如果线程池中的空闲线程的空闲时间超过该 “保存活动时间” 则立刻停止该线程，而该线程池默认的 “保持活动时间” 为 60s。<br>3、newSingleThreadExecutor() ：<br>     作用：该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，等待这一个线程空闲，当这个线程空闲了再按 FIFO 方式顺序执行任务队列中的任务。<br>4、newScheduledThreadPool() ：<br>     作用：该方法返回一个可以控制线程池内线程定时或周期性执行某任务的线程池。<br>5、newSingleThreadScheduledExecutor() ：<br>     作用：该方法返回一个可以控制线程池内线程定时或周期性执行某任务的线程池。只不过和上面的区别是该线程池大小为 1，而上面的可以指定线程池的大小。</p>
+<p><strong>注：</strong>Executors 只是一个工厂类，它所有的方法返回的都是<code>ThreadPoolExecutor</code>、<code>ScheduledThreadPoolExecutor</code>这两个类的实例。</p>
+<p><strong>（2） ExecutorService 有如下几个执行方法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- execute(Runnable)</span><br><span class="line">- submit(Runnable)</span><br><span class="line">- submit(Callable)</span><br><span class="line">- invokeAny(...)</span><br><span class="line">- invokeAll(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="execute-Runnable"><a href="#execute-Runnable" class="headerlink" title="execute(Runnable)"></a>execute(Runnable)</h3><p>​     这个方法接收一个 Runnable 实例，并且异步的执行，请看下面的实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line"></span><br><span class="line">executorService.execute(new Runnable() &#123;</span><br><span class="line">public void run() &#123;</span><br><span class="line">    System.out.println(&quot;Asynchronous task&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure>
+
+<h3 id="submit-Runnable"><a href="#submit-Runnable" class="headerlink" title="submit(Runnable)"></a>submit(Runnable)</h3><p><code>submit(Runnable)</code>和<code>execute(Runnable)</code>区别是前者可以返回一个 <strong>Future</strong> 对象，通过返回的 Future 对象，我们可以检查提交的任务是否执行完毕，请看下面执行的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Future future = executorService.submit(new Runnable() &#123;</span><br><span class="line">public void run() &#123;</span><br><span class="line">    System.out.println(&quot;Asynchronous task&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">future.get();  //returns null if the task has finished correctly.</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>如果任务执行完成，<code>future.get()</code>方法会返回一个 null。注意，future.get() 方法会产生阻塞。</p>
+<h3 id="submit-Callable"><a href="#submit-Callable" class="headerlink" title="submit(Callable)"></a>submit(Callable)</h3><p><code>submit(Callable)</code>和<code>submit(Runnable)</code>类似，也会返回一个 Future 对象，但是除此之外，submit(Callable) 接收的是一个 Callable 的实现，Callable 接口中的<code>call()</code>方法有一个返回值，可以返回任务的执行结果，而 Runnable 接口中的<code>run()</code>方法是<code>void</code>的，没有返回值。请看下面实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Future future = executorService.submit(new Callable()&#123;</span><br><span class="line">public Object call() throws Exception &#123;</span><br><span class="line">    System.out.println(&quot;Asynchronous Callable&quot;);</span><br><span class="line">    return &quot;Callable Result&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;future.get() = &quot; + future.get());</span><br></pre></td></tr></table></figure>
+
+<p>​    如果任务执行完成，future.get() 方法会返回 Callable 任务的执行结果。另外，future.get() 方法会产生阻塞。</p>
+<h3 id="invokeAny-…"><a href="#invokeAny-…" class="headerlink" title="invokeAny(…)"></a>invokeAny(…)</h3><p><code>invokeAny(...)</code>方法接收的是一个 Callable 的集合，执行这个方法不会返回 Future，但是会返回所有 Callable 任务中其中一个任务的执行结果。这个方法也无法保证返回的是哪个任务的执行结果，反正是其中的某一个。请看下面实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line"></span><br><span class="line">Set&lt;Callable&lt;String&gt;&gt; callables = new HashSet&lt;Callable&lt;String&gt;&gt;();</span><br><span class="line"></span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 1&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 2&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">    public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 3&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">String result = executorService.invokeAny(callables);</span><br><span class="line">System.out.println(&quot;result = &quot; + result);</span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure>
+
+<p>​     大家可以尝试执行上面代码，每次执行都会返回一个结果，并且返回的结果是变化的，可能会返回 “Task2” 也可是 “Task1” 或者其它。</p>
+<h3 id="invokeAll-…"><a href="#invokeAll-…" class="headerlink" title="invokeAll(…)"></a>invokeAll(…)</h3><p><code>invokeAll(...)</code>与 <code>invokeAny(...)</code>类似也是接收一个 Callable 集合，但是前者执行之后会返回一个 Future 的 List，其中对应着每个 Callable 任务执行后的 Future 对象。情况下面这个实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line"></span><br><span class="line">Set&lt;Callable&lt;String&gt;&gt; callables = new HashSet&lt;Callable&lt;String&gt;&gt;();</span><br><span class="line"></span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 1&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">    public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 2&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">callables.add(new Callable&lt;String&gt;() &#123;</span><br><span class="line">public String call() throws Exception &#123;</span><br><span class="line">    return &quot;Task 3&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">List&lt;Future&lt;String&gt;&gt; futures = executorService.invokeAll(callables);</span><br><span class="line">for(Future&lt;String&gt; future : futures)&#123;</span><br><span class="line">    System.out.println(&quot;future.get = &quot; + future.get());</span><br><span class="line">&#125;</span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3） ExecutorService 关闭方法</strong></p>
+<p>​     当我们使用完成 ExecutorService 之后应该关闭它，否则它里面的线程会一直处于运行状态。举个例子，如果的应用程序是通过 main() 方法启动的，在这个 main() 退出之后，如果应用程序中的 ExecutorService 没有关闭，这个应用将一直运行。之所以会出现这种情况，是因为 ExecutorService 中运行的线程会阻止 JVM 关闭。</p>
+<p>​     要关闭 ExecutorService 中执行的线程，我们可以调用<strong>ExecutorService.shutdown()</strong>方法。在调用 shutdown() 方法之后，ExecutorService 不会立即关闭，但是它不再接收新的任务，直到当前所有线程执行完成才会关闭，所有在 shutdown() 执行之前提交的任务都会被执行。</p>
+<p>​    如果想立即关闭 ExecutorService，我们可以调用<strong>ExecutorService.shutdownNow()</strong>方法。这个动作将跳过所有正在执行的任务和被提交还没有执行的任务。但是它并不对正在执行的任务做任何保证，有可能它们都会停止，也有可能执行完成。</p>
+<p><strong>2、使用 Java8 增强的 ForkJoinPool 产生线程池</strong></p>
+<p>​      在 Java 8 中，引入了自动并行化的概念。它能够让一部分 Java 代码自动地以并行的方式执行，前提是使用了 ForkJoinPool。</p>
+<p>​     ForkJoinPool 同 ThreadPoolExecutor 一样，也实现了 Executor 和 ExecutorService 接口。它使用了一个无限队列来保存需要执行的任务，而线程的数量则是通过构造函数传入，如果没有向构造函数中传入希望的线程数量，那么当前计算机可用的 CPU 数量会被设置为线程数量作为默认值。</p>
+<p>​      ForkJoinPool 主要用来使用分治法 (Divide-and-Conquer Algorithm) 来解决问题。典型的应用比如快速排序算法。这里的要点在于，ForkJoinPool 需要使用相对少的线程来处理大量的任务。比如要对 1000 万个数据进行排序，那么会将这个任务分割成两个 500 万的排序任务和一个针对这两组 500 万数据的合并任务。以此类推，对于 500 万的数据也会做出同样的分割处理，到最后会设置一个阈值来规定当数据规模到多少时，停止这样的分割处理。比如，当元素的数量小于 10 时，会停止分割，转而使用插入排序对它们进行排序。那么到最后，所有的任务加起来会有大概 2000000 + 个。问题的关键在于，对于一个任务而言，只有当它所有的子任务完成之后，它才能够被执行。所以当使用 ThreadPoolExecutor 时，使用分治法会存在问题，因为 ThreadPoolExecutor 中的线程无法像任务队列中再添加一个任务并且在等待该任务完成之后再继续执行。而使用 ForkJoinPool 时，就能够让其中的线程创建新的任务，并挂起当前的任务，此时线程就能够从队列中选择子任务执行。比如，我们需要统计一个 double 数组中小于 0.5 的元素的个数，那么可以使用 ForkJoinPool 进行实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class ForkJoinTest &#123;</span><br><span class="line">    private double[] d;</span><br><span class="line">    private class ForkJoinTask extends RecursiveTask &#123;</span><br><span class="line">        private int first;</span><br><span class="line">        private int last;</span><br><span class="line">        public ForkJoinTask(int first, int last) &#123;</span><br><span class="line">            this.first = first;</span><br><span class="line">            this.last = last;</span><br><span class="line">        &#125;</span><br><span class="line">        protected Integer compute() &#123;</span><br><span class="line">            int subCount;</span><br><span class="line">            if (last - first &lt; 10) &#123;</span><br><span class="line">                subCount = 0;</span><br><span class="line">                for (int i = first; i &lt;= last; i++) &#123;</span><br><span class="line">                    if (d[i] &lt; 0.5)&#123;</span><br><span class="line">                        subCount++;</span><br><span class="line">                     &#125;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;else &#123;</span><br><span class="line">                int mid = (first + last) /2;</span><br><span class="line">                ForkJoinTask left = new ForkJoinTask(first, mid);</span><br><span class="line">                left.fork();</span><br><span class="line">                ForkJoinTask right = new ForkJoinTask(mid + 1, last);</span><br><span class="line">                right.fork();</span><br><span class="line">                subCount = left.join();</span><br><span class="line">                subCount += right.join();</span><br><span class="line">            &#125;</span><br><span class="line">            return subCount;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ForkJoinPool pool=new ForkJoinPool();</span><br><span class="line">        pool.submit(new ForkJoinTask(0, 9999999));</span><br><span class="line">        pool.awaitTermination(2,TimeUnit.SECONDS);</span><br><span class="line">        System.out.println(&quot;Found &quot; + n + &quot; values&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     以上的关键是 fork() 和 join() 方法。在 ForkJoinPool 使用的线程中，会使用一个内部队列来对需要执行的任务以及子任务进行操作来保证它们的执行顺序。</p>
+<p><strong>注：</strong>使用 ThreadPoolExecutor 和 ForkJoinPool 的性能差异：</p>
+<p>  （1）首先，使用 ForkJoinPool 能够使用数量有限的线程来完成非常多的具有父子关系的任务，比如使用 4 个线程来完成超过 200 万个任务。但是，使用 ThreadPoolExecutor 时，是不可能完成的，因为 ThreadPoolExecutor 中的 Thread 无法选择优先执行子任务，需要完成 200 万个具有父子关系的任务时，也需要 200 万个线程，显然这是不可行的。</p>
+<p>  （2）ForkJoinPool 能够实现工作窃取 (Work Stealing)，在该线程池的每个线程中会维护一个队列来存放需要被执行的任务。当线程自身队列中的任务都执行完毕后，它会从别的线程中拿到未被执行的任务并帮助它执行。因此，提高了线程的利用率，从而提高了整体性能。</p>
+<p>  （3）对于 ForkJoinPool，还有一个因素会影响它的性能，就是停止进行任务分割的那个阈值。比如在之前的快速排序中，当剩下的元素数量小于 10 的时候，就会停止子任务的创建。</p>
+<p><strong>结论：</strong></p>
+<ol>
+<li>当需要处理递归分治算法时，考虑使用 ForkJoinPool；</li>
+<li>仔细设置不再进行任务划分的阈值，这个阈值对性能有影响；</li>
+<li>Java 8 中的一些特性会使用到 ForkJoinPool 中的通用线程池。在某些场合下，需要调整该线程池的默认的线程数量。</li>
+</ol>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>   产生死锁的四个必要条件如下。当下边的四个条件都满足时即产生死锁，即任意一个条件不满足既不会产生死锁。</p>
+<p> <strong>（1）死锁的四个必要条件</strong></p>
+<ul>
+<li>互斥条件：资源不能被共享，只能被同一个进程使用</li>
+<li>请求与保持条件：已经得到资源的进程可以申请新的资源</li>
+<li>非剥夺条件：已经分配的资源不能从相应的进程中被强制剥夺</li>
+<li>循环等待条件：系统中若干进程组成环路，该环路中每个进程都在等待相邻进程占用的资源</li>
+</ul>
+<p>​      举个常见的死锁例子：进程 A 中包含资源 A, 进程 B 中包含资源 B，A 的下一步需要资源 B，B 的下一步需要资源 A，所以它们就互相等待对方占有的资源释放，所以也就产生了一个循环等待死锁。</p>
+<p>  <strong>（2）处理死锁的方法</strong></p>
+<ul>
+<li><p>忽略该问题，也即鸵鸟算法。当发生了什么问题时，不管他，直接跳过，无视它；</p>
+</li>
+<li><p>检测死锁并恢复；</p>
+</li>
+<li><p>资源进行动态分配；</p>
+</li>
+<li><p>破除上面的四种死锁条件之一。</p>
+<p>八、线程相关类</p>
+</li>
+</ul>
+<p><strong>（1）ThreadLocal</strong></p>
+<p>​      ThreadLocal 它并不是一个线程，而是一个可以在每个线程中存储数据的数据存储类，通过它可以在指定的线程中存储数据，数据存储之后，只有在指定线程中可以获取到存储的数据，对于其他线程来说则无法获取到该线程的数据。 即多个线程通过同一个 ThreadLocal 获取到的东西是不一样的，就算有的时候出现的结果是一样的（偶然性，两个线程里分别存了两份相同的东西），但他们获取的本质是不同的。使用这个工具类可以简化多线程编程时的并发访问，很简洁的隔离多线程程序的竞争资源。</p>
+<p>​     对于多线程资源共享的问题，同步机制采用了 “以时间换空间” 的方式，而 ThreadLocal 采用了 “以空间换时间” 的方式。前者仅提供一份变量，让不同的线程排队访问，而后者为每一个线程都提供了一份变量，因此可以同时访问而互不影响。ThreadLocal 类提供了如下的三个 public 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal()</span><br><span class="line">          创建一个线程本地变量。</span><br><span class="line">T get()</span><br><span class="line">          返回此线程局部变量的当前线程副本中的值，如果这是线程第一次调用该方法，则创建并初始化此副本。</span><br><span class="line">protected  T initialValue()</span><br><span class="line">          返回此线程局部变量的当前线程的初始值。</span><br></pre></td></tr></table></figure>
+
+<p>​     下面通过系统源码来分析出现这个结果的原因。 在 ThreadLocal 中存在着两个很重要的方法，get() 和 set() 方法，一个读取一个设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* Returns the value of this variable for the current thread. If an entry</span><br><span class="line">* doesn&apos;t yet exist for this variable on this thread, this method will</span><br><span class="line">* create an entry, populating the value with the result of</span><br><span class="line">* &#123;@link #initialValue()&#125;.</span><br><span class="line">*</span><br><span class="line">* @return the current value of the variable for the calling thread.</span><br><span class="line">*/</span><br><span class="line">@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">public T get() &#123;</span><br><span class="line">   // Optimized for the fast path.</span><br><span class="line">   Thread currentThread = Thread.currentThread();</span><br><span class="line">   Values values = values(currentThread);</span><br><span class="line">   if (values != null) &#123;</span><br><span class="line">        Object[] table = values.table;</span><br><span class="line">        int index = hash &amp; values.mask;</span><br><span class="line">        if (this.reference == table[index]) &#123;</span><br><span class="line">   　　　　　      return (T) table[index + 1];</span><br><span class="line">         &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">　　　　values = initializeValues(currentThread);</span><br><span class="line">　　&#125;</span><br><span class="line">　　return (T) values.getAfterMiss(this);</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line">* Sets the value of this variable for the current thread. If set to</span><br><span class="line">* &#123;@code null&#125;, the value will be set to null and the underlying entry will</span><br><span class="line">* still be present.</span><br><span class="line">*</span><br><span class="line">* @param value the new value of the variable for the caller thread.</span><br><span class="line">*/</span><br><span class="line">public void set(T value) &#123;</span><br><span class="line">     Thread currentThread = Thread.currentThread();</span><br><span class="line">　　 Values values = values(currentThread);</span><br><span class="line">　　 if (values == null) &#123;</span><br><span class="line">　　　　  values = initializeValues(currentThread);</span><br><span class="line">　　　&#125;</span><br><span class="line">   values.put(this, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     从注释上可以看出，get 方法会返回一个当前线程的变量值，如果数组不存在就会创建一个新的。另外，对于 “当前线程” 和“数组”，数组对于每个线程来说都是不同的 values.table。而 values 是通过当前线程获取到的一个 Values 对象，因此这个数组是每个线程唯一的，不能共用，而下面的几句话也更直接了，获取一个索引，再返回通过这个索引找到数组中对应的值。这也就解释了为什么多个线程通过同一个 ThreadLocal 返回的是不同的东西。</p>
+<p>​     Java 中为什么要这么设置呢？</p>
+<ul>
+<li>ThreadLocal 在日常开发中使用到的地方较少，但是在某些特殊的场景下，通过 ThreadLocal 可以轻松实现一些看起来很复杂的功能。一般来说，当某些数据是以线程为作用域并且不同线程具有不同的数据副本的时候，就可以考虑使用 ThreadLocal。例如在 Handler 和 Looper 中。对于 Handler 来说，它需要获取当前线程的 Looper，很显然 Looper 的作用域就是线程并且不同的线程具有不同的 Looper，这个时候通过 ThreadLocal 就可以轻松的实现 Looper 在线程中的存取。如果不采用 ThreadLocal，那么系统就必须提供一个全局的哈希表供 Handler 查找指定的 Looper，这样就比较麻烦了，还需要一个管理类。</li>
+<li>ThreadLocal 的另一个使用场景是复杂逻辑下的对象传递，比如监听器的传递，有些时候一个线程中的任务过于复杂，就可能表现为函数调用栈比较深以及代码入口的多样性，这种情况下，我们又需要监听器能够贯穿整个线程的执行过程。这个时候就可以使用到 ThreadLocal，通过 ThreadLocal 可以让监听器作为线程内的全局对象存在，在线程内通过 get 方法就可以获取到监听器。如果不采用的话，可以使用参数传递，但是这种方式在设计上不是特别好，当调用栈很深的时候，通过参数来传递监听器这个设计太糟糕。而另外一种方式就是使用 static 静态变量的方式，但是这种方式存在一定的局限性，拓展性并不是特别的强。比如有 10 个线程在执行，就需要提供 10 个监听器对象。</li>
+</ul>
+<p><strong>注：</strong>ThreadLocal 和其他所有的同步机制一样，都是为了解决多线程中对于同一变量的访问冲突。值普通的同步机制中，通过对象加锁来实现多线程对同一变量的安全访问，且该变量是多线程共享的，所有需要使用这种同步机制来明确分开是在什么时候对变量进行读写，在什么时候需要锁定该对象。此种情况下，系统并没有将这个资源复制多份，而是采取安全机制来控制访问而已。ThreadLocal 只是从另一个角度解决多线程的并发访问，即将需要并发访问的资源复制多份，每个线程拥有一份资源，每个线程都有自己的资源副本。</p>
+<p><strong>总结：</strong>若多个线程之间需要共享资源，以达到线程间的通信时，就使用同步机制；若仅仅需要隔离多线程之间的关系资源，则可以使用 ThreadLocal。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/01/Java多线程小结/" data-id="ck1lio3sr0000lwv7gbjkmbs1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-集合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/19/集合/" class="article-date">
+  <time datetime="2019-09-18T17:40:58.000Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/集合/">集合小结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合框架图分析"><a href="#集合框架图分析" class="headerlink" title="集合框架图分析"></a>集合框架图分析</h1><p>+++</p>
+<h2 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h2><p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122112853268-1919394058.gif" alt="集合框架"></p>
+<h2 id="框架简化图"><a href="#框架简化图" class="headerlink" title="框架简化图"></a>框架简化图</h2><p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161122113410534-705560500.jpg" alt="框架简化图"></p>
+<p>+++</p>
+<ol>
+<li>所有的集合类都位于java.util包下, Java的集合类主要是由两个接口派生而来: Collection 和Map, 这两个接口是Java集合框架的根接口, 包含着一些子接口或是实现类 </li>
+<li>集合接口 : 有6个, 用短虚线表示 , 表示不同集合的类型, 是集合框架 的基础 , 分别为 : <strong>ArrayList</strong>   <strong>LinkedList</strong>  <strong>HashSet</strong>  <strong>TreeSet</strong>  <strong>HashMap</strong>  <strong>TreeMap</strong> </li>
+<li>抽象类: 有5个, 用长虚线表示 , 是对集合接口的部分实现, 可以扩展为自定义集合类 , 分别为 :  AbstractList  AbstractCollection  AbstractSet  AbstractMap  AbstractMap</li>
+<li>实现类 : 有8个, 用实线表示 , 是接口的具体实现 , 分别为 : LinkedList  ArrayList  Stack  Vector  HashSet  TreeSet  HashMap  TreeMap  </li>
+<li><u>Collection接口是一组允许重复的对象</u></li>
+<li>Set接口继承自Collection, 集合元素不重复</li>
+<li>List接口 继承自Collection, 集合元素无序</li>
+<li>Map接口是键值对形式的对象, 与Collection接口没有什么关系</li>
+<li>Set List Map 可以看成是集合的三大类<ol>
+<li>List集合是有序集合 , 集合中的元素可以重复, 访问集合中的元素可以根据元素的索引来访问</li>
+<li>Set集合是无序集合, 集合中的元素不可以重复, 访问集合中的元素只能根据元素本身来访问. 故而Set集合中元素不允许重复</li>
+<li>Map集合中保存 K-V形式的元素, 访问时只能根据每项元素的key来访问value</li>
+</ol>
+</li>
+</ol>
+<h1 id="总体分析"><a href="#总体分析" class="headerlink" title="总体分析"></a>总体分析</h1><p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170119151138921-1550766941.jpg" alt="框架图"></p>
+<p>根据框架图, 了解到主干是Collecton和Map</p>
+<ol>
+<li>Collection是一个高度抽象出来的集合接口, 包含了集合的基本操作 和属性, 其中有List和Set两大分支<ul>
+<li>List是一个有序队列, 每个元素都有它的索引, 第一个元素的索引值是0, List的实现类有: ArrayList  LinkedList  Vector  Stack</li>
+<li>Set是一个无序队列 , 不允许有重复的元素, 其实现类有: HashSet  TreeSet , HashSet依赖于HashMap, 实际上是通过HashMap实现的, TreeSet依赖于TreeMap, 它的实现 是依赖于TreeMap实现 .</li>
+</ul>
+</li>
+<li>Map是一个映射接口, 即K-V结构, Map中的每一个元素都包含一个key和一个value, AbstractMap是一个抽象类, 它实现了Map接口中大部分的API, 而HashMap, TreeMap, WeakHashMap都是继承自AbstractMap. Hashtable虽然继承自Dictionary, 但是实现了Map接口.<ul>
+<li>Dictionary类是一个抽象类, 它是任何可以将键映射到对应值的类的抽象父类, 和Map类相似,  但是已经过时</li>
+</ul>
+</li>
+<li>Iterator是遍历集合的工具 , Collection依赖于 Iterator, 是因为Collection的实现类都要实现 Iterator()方法, 返回一个Iterator对象, ListIterator是专门为遍历List而存在的.</li>
+<li>在Java的集合中, 与数组类似, 也存在工具类, 即Collections</li>
+</ol>
+<h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><ol>
+<li><p>Collection接口是处理对象集合的根接口, 在此接口中定义了很多对元素进行操作的方法, Collection接口有两个主要的子接口, 分别为List 和Set . <strong>Map并不是Collection的子接口</strong></p>
+</li>
+<li><p>Collection接口的主要方法如下: </p>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201611/249993-20161123132517440-795442770.png" alt="Collection接口方法"></p>
+<p>在这里列举几个比较常用的方法, 例如<strong>add()</strong>是添加一个元素到集合中, <strong>addAll()</strong>是将制定集合中的所有元素都添加到当前集合中, <strong>contains()</strong>方法是用来检测集合中是否包含指定的元素 , 而<strong>toArray()</strong>方法返回一个表示集合的数组.</p>
+<p>++++</p>
+<p>需要引起注意的是, 在Collection中有一个Iterator()方法, 它的作用是返回一个Iterator接口, 通常我们需要通过Iterator迭代器来遍历集合. ListIterator是List接口所特有的, 在List接口中, 通过ListIterator()返回一个ListIterator对象.</p>
+</li>
+</ol>
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><ul>
+<li><p>List集合代表一个有序集合, 集合中的每个元素都有其对应的顺序索引, List集合添加重复的元素, 所以可以通过所以来访问指定位置的集合元素</p>
+</li>
+<li><p>List接口继承自Collection接口, 它可以定义一个<strong>允许重复</strong>的<strong>有序</strong>集合, 通过索引访问时类似于数组的下标, 都是从0开始计数 . </p>
+</li>
+<li><p>List接口是Collection的直接接口, List代表的是有序的Collection, 即它是用某种特定的插入顺序来维护元素的顺序, 这样我们就可以对列表中每个元素的插入位置进行准备的控制, 同时也能根据元素的整数索引来访问元素, 同时也可以搜索元素. </p>
+</li>
+<li><p>实现了List接口的集合主要有 : ArrayList, LinkedList, Vector, Stack.</p>
+</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><ul>
+<li>ArrayList可以理解为一个动态的数组, 也是最常用的集合, 它允许任何符合规则的元素插入, 包括null, 每一个ArrayList都有一个初始的容量(10), 这个容量表示动态数组的长度, 随着容器中元素个数的增加, 容器的大小也会动态的进行增加. </li>
+<li>每次添加元素的时候都会进行容量检查, 当超出设置的临界值时就会进行扩容操作, 所以我们在使用中如果明确所插入元素的数额, 可以指定初始容量值, 这样可以避免过多的进行扩容操作而浪费时间, 降低效率.</li>
+<li>size() isEmpty()  get()  set()  iterator()  listIterator()操作都以固定时间运行, 而add()操作是以固定时间运行, 也就是添加n个元素的时间复杂度是O(n) </li>
+</ul>
+<p><strong>ArrayList擅长于随机访问, 同时它是非同步的</strong></p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><ul>
+<li><p>LinkedList也是实现List接口的集合, 只不过它是一个双向链表, 所以它除了ArrayList拥有的基本方法外还有get(), remove(), insert() 等方法.</p>
+</li>
+<li><p>由于与ArrayList的实现方式, LinkedList不支持随机访问, 它的所有操作都要按照双向链表执行, 在列表中索引的操作需要从头或是从尾部开始, 这样好处是可以通过较低的代价在List中进行插入和删除操作. </p>
+</li>
+<li><p>LinkedList和ArrayList一样是非同步的, 所以如果多个线程同时访问一个List, 需要我们去实现访问同步, 一种解决办法是 : 在创建List的时候构造一个同步的List, 如下 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list1 = Collections.synchronizedList(new ArrayList());</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><ul>
+<li>Vector与ArrayList是类似的, 只不过它是同步, 所以Vector是线程安全的动态数组, 其余的操作与ArrayList基本是一样的</li>
+</ul>
+<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><ul>
+<li>Stack继承自Vector,  它实现了一个后进先出的堆栈, 在Stack中提供了5个额外的方法使Vector可以被仿作堆栈使用, 基本的push()和pop()方法, 还有peek()方法获得堆顶的元素, empty()测试堆栈是否为空, search()方法检测某一个元素是否在堆栈中. Stack刚创建时是空栈.</li>
+</ul>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144612442-1195596330.png" alt="List"></p>
+<hr>
+<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><ul>
+<li>Set是一种不包含重复元素的有序的集合, 继承自Collection, 它维持着自己的内部排序, 所以随机访问没有意义, 也就没有实现RandomAccess接口, 与List集合一样, 它允许null的存在且仅限一个. 由于Set接口的特殊性, 所以存入Set集合的元素必须是不同的, 同时要注意在对集合中元素进行相关操作时, 如果出现了两个相同的元素, 则会产生一些问题. Set接口有三个具体的实现类, 分别为: <strong>散列集HashSet</strong>  , <strong>链式散列集LinkedHashSet</strong>  , <strong>树形集TreeSet</strong></li>
+<li>由于Set集合的不重复的特性, 所以任意的两个元素恒有 :  e1.equals(e2) = false</li>
+<li>在Set中最多有一个null元素, 虽然在Set集合中不保持插入顺序, 但是在集合内部由于HashCode使然, 元素的具体位置是固定的</li>
+<li>在Set接口中的不重复元素是有特殊要求的 ; <ul>
+<li>正常的两个元素A.B是可以放置在Set集合中, 但是如果这两个元素都重写了hashCode()和equals(), 并且重写后的这两个方法是相同的话, 那这两个元素就不能同时放在同一个Set集合中了. 所以<strong>Set集合的去重和hashCode()和equals()直接相关</strong> </li>
+<li>有时候会出现包含内容相同的两个不同的对象, 由于默认会重写equals()和hashCode(), 这两个方法会比较对象的内容, 所以会出现添加失败的情况</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><ul>
+<li><p>HashSet是一个没有重复元素的集合, 由HashMap实现, 不保证元素的顺序(此处的顺序是插入顺序和输出的顺序会出现不一直的情况), 而且HashSet允许使用null元素, <strong>HashSet是非同步的</strong>, 如果多个线程同时访问一个HashSet, 而其中至少一个线程修改了该HashSet , 那此集合必须保持外部同步, </p>
+</li>
+<li><p>HashSet是按Hash算法来存储集合的元素的, 因此具有很好的查找和存取性能</p>
+</li>
+<li><p>HashSet 的实现方式如下:</p>
+<ul>
+<li>通过一个HashMap存储元素, 此元素存放在HashMap的key中, 而在Value中统一使用一个Object对象</li>
+</ul>
+</li>
+<li><p>HashSet学习中存在的误区: </p>
+<ul>
+<li><p>HashSet中是可以防止null值的, 但是只能存放一个null值</p>
+</li>
+<li><p>HashSet中存储元素的位置是固定的</p>
+<p>HashSet中存储的元素是无序的, 这个是因为HashSet的底层是基于Hash算法实现的, 所以存放的位置相对是固定的</p>
+</li>
+<li><p>在操作可变变量时, 如果改变元素状态后出现equals()返回true, 将会出现一些问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><ul>
+<li><p>LinkedHashSet继承自HashSet, 底层是基于LinkedHashMap来实现的, 属于有序 / 非同步的.</p>
+</li>
+<li><p>LinkedHashSet也是根据元素的hashCode值来决定元素的存放位置的, 但是它同时使用链表维护元素的次序. 这样可以保证元素是以<strong>插入顺序</strong>保存, 也就是在遍历集合的时候会以添加顺序来访问集合内元素</p>
+</li>
+</ul>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><ul>
+<li><p>TreeSet是一个有序集合, 其底层是基于TreeMap实现的, 是<strong>非线程安全的</strong>.</p>
+</li>
+<li><p>TreeSet可以确保集合元素处于排序状态 , 支持一下两种排序方式</p>
+<ul>
+<li>自然排序(默认)</li>
+<li>定制排序</li>
+</ul>
+<p>如果使用不带参数的构造函数, 则是使用自然比较器, 如果用户需要使用自定义饿比较器, 则要使用带比较器的参数.</p>
+</li>
+<li><p>TreeSet是通过compare或者compareTo来判断元素是否一致, compare通过判断两个对象的id,如果id相同则为重复元素,  不会被加入到集合中</p>
+</li>
+</ul>
+<h2 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h2><p>​    Map集合与List和Set不同, 它是由一系列键值对组成, 提供key到value的映射, 同时它也<strong>没有继承Collection接口</strong>. 在Map中保证了key与value之间的一一对应关系, 所以在Map中不能存在相同的key值, 但是可以有相同的value .</p>
+<hr>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>​    HashMap以哈希表的数据结构实现, 查找对象时通过哈希函数来计算元素的存储位置, 这种结构的设计是为快速查询而设计的, 在集合的内部定义一个hash表数组(Entry[] table), 元素会通过哈希转换函数将元素的哈希地址转换成数组中存放的索引, 如果key出现了冲突, 则使用散列链表的形式将所有相同的哈希地址的元素串起来, 我们可以通过HashMap.Entry的源码来发现它是一个单链表的机构.</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><ul>
+<li>LinkedHashMap是HashMap的一个子类, 它保留插入的顺序, <strong><em>如果需要输出的顺序和输入的顺序一致,就选用LinkedHashMap</em></strong></li>
+<li>LinkedHashMap是Map接口的哈希表+链接列表实现, 具有可预知的迭代顺序, 此实现提供所有可选的映射操作, 并且允许使用null值和null键, 此类不保证映射的顺序, 同时也不保证该顺序恒久不变</li>
+<li>LinkedHashMap的实现与HashMap的不同在于: HashMap维护着一个运行于所有条目的双重链接列表, 此链接列表定义了迭代顺序, 此迭代顺序可以是插入顺序或是访问顺序</li>
+<li>根据链表中元素的顺序可以分为 : 按<strong>插入顺序</strong>的链表和按<strong>访问顺序</strong>的链表(调用get方法), 默认是按照插入顺序排序.  如果指定按访问顺序排序, 那么调用get方法后, 会将这次访问的元素移至链表尾部, 不断访问可以形成按访问顺序排序的链表</li>
+<li>LinkedHashMap是不同步的, 所以在多个线程同时访问时, 如果发生了映射关系的更改, 要进行外部同步操作</li>
+<li><strong>由于LinkedHashMap需要维护元素的插入顺序, 因此性能略微低于HashMap的性能, 但是在迭代访问Map里的全部元素时会有很好的性能, 因为它以链表来维护内部顺序</strong></li>
+</ul>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><ul>
+<li><p>TreeMap是一个<strong>有序的</strong>K-V集合, 非同步, 基于红黑树(Red-Black Tree)实现, 每一个k-v节点作为红黑树的一个结点.</p>
+</li>
+<li><p>TreeMap存储时会进行排序, 根据key的值来对键值对进行排序, 具体的排序方式和TreeSet是一样是分为两种(取决于构造方法) : </p>
+<ul>
+<li>自然排序 : TreeMap中所有的key必须实现<strong>Comparable</strong>接口, 并且所有的key都应该是同一个类的对象, 否则会出现ClassCaseException(类型转换异常)</li>
+<li>定制排序 : 定义TreeMap时, 创建一个Comparator对象, 该对象对所有的TreeMap中所有的key进行排序, 采用定制排序的时候不需要key实现Comparable接口</li>
+<li>TreeMap判断两个元素相等的标准:<ul>
+<li>两个元素的key通过equals()返回为true, 并且通过compareTo()方法返回0 , 说明两个元素相等</li>
+</ul>
+</li>
+<li>如果使用自定义的类作为TreeMap中的key值, 并且想让TreeMap能够良好的工作, 必须<strong>重写自定义类中的equals()方法</strong>,</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://images2015.cnblogs.com/blog/249993/201701/249993-20170117144843208-531675510.png" alt="Map总结"></p>
+<h1 id="Iterator与ListIterator详解"><a href="#Iterator与ListIterator详解" class="headerlink" title="Iterator与ListIterator详解"></a>Iterator与ListIterator详解</h1><h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><ul>
+<li><p>Iterator的定义如下 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public interface Iterator&lt;E&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Iterator是一个接口, 它是集合的迭代器, 集合可以通过Iterator去遍历集合中的元素</p>
+</li>
+<li><p>Iterator提供的API接口如下 : </p>
+<ul>
+<li>boolean hasNext() —-&gt;  用来判断集合里是否存在下一个元素, 如果有, 返回true</li>
+<li>Object next()  —-&gt;  返回集合中的下一个元素</li>
+<li>void remove()  —-&gt;  删除集合里上一次next方法返回的元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        List list = new ArrayList();</span><br><span class="line">        list.add(&quot;aaa&quot;);</span><br><span class="line">        list.add(&quot;bbb&quot;);</span><br><span class="line">        list.add(&quot;ccc&quot;);</span><br><span class="line">        System.out.println(&quot;BeforeList&quot; + list);</span><br><span class="line">        Iterator it = list.iterator();</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            String t= (String) it.next();</span><br><span class="line">            if(&quot;bbb&quot;.equals(t))&#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;AfterList&quot; + list);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BeforeList[aaa, bbb, ccc]</span><br><span class="line">AfterList[aaa, ccc]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:</p>
+<ul>
+<li>Iterator只能单方向移动</li>
+<li>Iterator.remove()是唯一安全的方式在迭代过程中修改集合, 如果在迭代过程中以任何其他的方式修改了集合的内容, 会产生未知的结果, </li>
+<li><strong>每调用一次next()方法, remove()只能被调用一次, 否则就会抛出异常</strong></li>
+</ul>
+<h2 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h2><ul>
+<li><p>ListIterator是一个功能更加强大的迭代器, 它继承与Iterator接口, 只能用于各种List类型的访问, 可以通过调用listIterator()方法产生一个指向List开始处的ListIterator,  还可以调用这个方法创建一个一开始就指向集合索引为n的元素出的ListIterator.</p>
+</li>
+<li><p>ListIterator的接口定义如下: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt; &#123;</span><br><span class="line">    boolean hasNext();</span><br><span class="line"> </span><br><span class="line">    E next();</span><br><span class="line"> </span><br><span class="line">    boolean hasPrevious();</span><br><span class="line"> </span><br><span class="line">    E previous();</span><br><span class="line"> </span><br><span class="line">    int nextIndex();</span><br><span class="line"> </span><br><span class="line">    int previousIndex();</span><br><span class="line"> </span><br><span class="line">    void remove();</span><br><span class="line"> </span><br><span class="line">    void set(E e);</span><br><span class="line"> </span><br><span class="line">    void add(E e);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据源码的定义, 我们可以得出 : </p>
+<ul>
+<li>双向移动(向前 / 向后遍历)</li>
+<li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个 元素的索引</li>
+<li>可以使用set()方法替换它访问过的最后一个元素</li>
+<li>可以使用add()方法在next()方法返回的元素之前或是previous()方法返回的元素之后插入一个元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ListIteratorExample &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = new ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(&quot;aaa&quot;);</span><br><span class="line">        a.add(&quot;bbb&quot;);</span><br><span class="line">        a.add(&quot;ccc&quot;);</span><br><span class="line">        System.out.println(&quot;Before iterate : &quot; + a);</span><br><span class="line">        ListIterator&lt;String&gt; it = a.listIterator();</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next() + &quot;, &quot; + it.previousIndex() + &quot;, &quot; + it.nextIndex());</span><br><span class="line">        &#125;</span><br><span class="line">        while (it.hasPrevious()) &#123;</span><br><span class="line">            System.out.print(it.previous() + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        it = a.listIterator(1);</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">            if (&quot;ccc&quot;.equals(t)) &#123;</span><br><span class="line">                it.set(&quot;nnn&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                it.add(&quot;kkk&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;After iterate : &quot; + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before iterate : [aaa, bbb, ccc]</span><br><span class="line">aaa, 0, 1</span><br><span class="line">bbb, 1, 2</span><br><span class="line">ccc, 2, 3</span><br><span class="line">ccc bbb aaa </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">After iterate : [aaa, bbb, kkk, nnn]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="异同点"><a href="#异同点" class="headerlink" title="异同点"></a>异同点</h1><h2 id="ArrayList和LinkedList"><a href="#ArrayList和LinkedList" class="headerlink" title="ArrayList和LinkedList"></a>ArrayList和LinkedList</h2><ol>
+<li>ArrayList是实现了基于动态数组的数据结构, LinkedList基于链表的数据结构</li>
+<li>对于随机访问get和set, ArrayList绝对是优于LinkedList, 因为LinkedList需要移动”指针”</li>
+<li>对于新增和删除操作add()和remove(), LinedList比较占优势 , 因为ArrayList要移动数据<ul>
+<li>这一点也要视具体情况 , 如果只是对单条数据插入或是删除, ArrayList的速度反而优于LinkedList, 但是如果批量随机的插入,删除,  LinkedList的速度是要大大的优于ArrayList, <strong>因为ArrayList每插入一条数据,  都要移动插入点及其以后的数据</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="Hasht和HashMap"><a href="#Hasht和HashMap" class="headerlink" title="Hasht和HashMap"></a>Hasht和HashMap</h2><p>*<em>相同点 : *</em>  </p>
+<ol>
+<li>都实现了Map, Cloneable, java.io.Serializable接口 </li>
+<li>都是存储”键值对”的<strong>散列表</strong>, 而且都是采用散列法实现的</li>
+</ol>
+<p>*<em>不同点 : *</em></p>
+<ol>
+<li><p>历史原因 :  Hashtable是基于陈旧的Dictionary类的, 而HashMap是 java1.2引进的Map接口的一个实现</p>
+</li>
+<li><p>同步性 : Hashtable是线程安全的, 也就是同步的, 而HashMap是线程不安全的, 非同步的</p>
+</li>
+<li><p>对null值的处理:  HashMap的key, value都可以是 null, 凡是Hashtable的key , value都不能为null</p>
+</li>
+<li><p>基类不同 :  HashMap继承自 AbstractMap, 而Hashtable继承自Dictionary</p>
+<blockquote>
+<p>Dictionary是一个抽象类, 它直接继承于Object类, 没有实现任何接口, Dictionary类是 jdk1.0引入的, 同样支持添加”键值对k-v”的内容以及获取大小等 操作, 但是 API比Map少, 而且Dictionary一般是通过Enumeration(枚举器)去遍历, Map则是 通过 Iterator(迭代器)去遍历, 也支持Iterator遍历.</p>
+</blockquote>
+<blockquote>
+<p>AbstractMap是一个抽象类, 它实现了Map接口的绝大部分API函数, 为Map的具体实现类提供能了极大的便利,  它是 jdk1.2新增的类</p>
+</blockquote>
+</li>
+<li><p>支持的遍历种类不同:  HashMap 只支持Iterator(遍历), 而Hashtable支持<strong>迭代器</strong>和<strong>枚举器</strong>两种方式遍历 </p>
+</li>
+</ol>
+<h2 id="HashMap-Hashtable-LinkHashMap-TreeMap"><a href="#HashMap-Hashtable-LinkHashMap-TreeMap" class="headerlink" title="HashMap, Hashtable , LinkHashMap , TreeMap"></a>HashMap, Hashtable , LinkHashMap , TreeMap</h2><ol>
+<li>HashMap是一个最常用的Map, 它根据键的HashCode 值存储数据, 根据键可以直接获取它对应的值, 具有很快的访问速度, 遍历时, 取得数据的顺序完全是随机的, 但是在容器中的存储顺序是有一定规律的. HashMap最多只允许一条记录的健为null, 允许多条记录的值为Null; HashMap不支持线程的同步, 即任一时刻可以有多个线程同时操作HashMap, 所以会导致数据 的不一致, 需要同步操作,  可以使用Collections的synchronizedMap方法使HashMap具有同步的功能.</li>
+<li>Hashtable与HashMap类似, 不同的是 : Hashtable不允许记录的健或是值为null, 它支持线程的同步, 这也导致了Hashtable在写入时会比较慢</li>
+<li>LinkedHashMap保存了记录的插入顺序, 在用 Iterator遍历LinkedHashMap时, 先得到的记录肯定是先插入的, 我们也可以带参构造, 自定义排序. 在遍历的时候会比HashMap慢, 但是当HashMap容量很大, 实际数据比较少时, HashMap在遍历的时候会比LinkedhashMap慢, 因为LinkedHashMap的遍历速度只和实际 数据有关, 与容量无关, 而Hashmap的遍历速度和它的容量是有关系的. <strong>如果需要输出的顺序和输入的相同，那么用 LinkedHashMap 可以实现</strong>,它还可以按照读取顺序来排列, 在连接池中可以应用.LinkedHashMap 实现与 HashMap 的不同之处在于，后者维护着一个运行于所有条目的双重链表。此链接列表定义了迭代顺序，<strong>该迭代顺序可以是插入顺序或者是访问顺序</strong>。对于 LinkedHashMap 而言，它继承与 HashMap、底层使用<strong>哈希表与双向链表来保存所有元素</strong>。其基本操作与父类 HashMap 相似，它通过重写父类相关的方法，来实现自己的链接列表特性。</li>
+<li>LinkedHashMap 实现与 HashMap 的不同之处在于，后者维护着一个运行于所有条目的双重链表。此链接列表定义了迭代顺序，<strong>该迭代顺序可以是插入顺序或者是访问顺序</strong>。对于 LinkedHashMap 而言，它继承与 HashMap、底层使用<strong>哈希表与双向链表来保存所有元素</strong>。其基本操作与父类 HashMap 相似，它通过重写父类相关的方法，来实现自己的链接列表特性。</li>
+<li>一般情况下，我们用的最多的是 HashMap，HashMap 里面存入的键值对在取出的时候是随机的，它根据键的 HashCode 值存储数据，根据键可以直接获取它的值，具有很快的访问速度。在 Map 中插入、删除和定位元素，HashMap 是最好的选择。<pre><code>TreeMap 取出来的是排序后的键值对。但如果您要**按自然顺序或自定义顺序遍历键**，那么 TreeMap 会更好。
+LinkedHashMap 是 HashMap 的一个子类，如果需要**输出的顺序和输入的相同，**那么用 LinkedHashMap 可以实现，它还可以按读取顺序来排列，像连接池中可以应用。 </code></pre></li>
+</ol>
+<h2 id="HashSet-LinkedHashSet-TreeSet"><a href="#HashSet-LinkedHashSet-TreeSet" class="headerlink" title="HashSet , LinkedHashSet,  TreeSet"></a>HashSet , LinkedHashSet,  TreeSet</h2><ol>
+<li><p>Set <strong>不允许包含相同的元素</strong>，如果试图把两个相同元素加入同一个集合中，add 方法返回 false。<br>Set 判断两个对象相同不是使用 == 运算符，而是<strong>根据 equals 方法</strong>。也就是说，只要两个对象用 equals 方法比较返回 true，Set 就不会接受这两个对象。</p>
+</li>
+<li><p>HashSet 有以下特点：<br>-&gt;  不能保证元素的排列顺序，顺序有可能发生变化。<br>-&gt;  不是同步的。<br>-&gt;  集合元素可以是 null，但只能放入一个 null。</p>
+<pre><code>当向 HashSet 结合中存入一个元素时，HashSet 会调用该对象的 hashCode() 方法来得到该对象的 hashCode 值，然后根据 hashCode 值来决定该对象在 HashSet 中存储位置。简单的说，HashSet 集合判断两个元素相等的标准是两个对象通过 equals 方法比较相等，并且两个对象的 hashCode() 方法返回值也相等。
+注意，如果要把一个对象放入 HashSet 中，重写该对象对应类的 equals 方法，也应该重写其 hashCode() 方法。其规则是如果两个对象通过 equals 方法比较返回 true 时，其 hashCode 也应该相同。另外，对象中用作 equals 比较标准的属性，都应该用来计算 hashCode 的值。</code></pre></li>
+<li><p>LinkedHashSet 集合同样是<strong>根据元素的 hashCode 值来决定元素的存储位置</strong>，但是它同时使用链表维护元素的次序。这样使得元素看起来像是以插入顺序保存的，也就是说，当遍历该集合时候，LinkedHashSet 将会以元素的添加顺序访问集合的元素。<br>   LinkedHashSet 在迭代访问 Set 中的全部元素时，<strong>性能比 HashSet 好，但是插入时性能稍微逊色于 HashSet。</strong></p>
+</li>
+<li><p>TreeSet 是 SortedSet 接口的唯一实现类，TreeSet 可以确保集合元素处于排序状态。TreeSet 支持两种排序方式，自然排序和定制排序，其中自然排序为默认的排序方式。向 TreeSet 中加入的应该是同一个类的对象。</p>
+<pre><code>TreeSet 判断两个对象不相等的方式是两个对象通过 equals 方法返回 false，或者通过 CompareTo 方法比较没有返回 0。</code></pre><p>自然排序</p>
+<pre><code>自然排序使用要排序元素的 CompareTo（Object obj）方法来比较元素之间大小关系，然后将元素按照升序排列。
+Java 提供了一个 Comparable 接口，该接口里定义了一个 compareTo(Object obj) 方法，该方法返回一个整数值，实现了该接口的对象就可以比较大小。obj1.compareTo(obj2) 方法如果返回 0，则说明被比较的两个对象相等，如果返回一个正数，则表明 obj1 大于 obj2，如果是负数，则表明 obj1 小于 obj2。如果我们将两个对象的 equals 方法总是返回 true，则这两个对象的 compareTo 方法返回应该返回 0。</code></pre><p>定制排序</p>
+<pre><code>自然排序是根据集合元素的大小，以升序排列，如果要定制排序，应该使用 Comparator 接口，实现 int compare(T o1,T o2) 方法。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package com.yjz.test;  </span><br><span class="line">  </span><br><span class="line">import java.util.HashSet;  </span><br><span class="line">import java.util.LinkedHashSet;  </span><br><span class="line">import java.util.TreeSet;  </span><br><span class="line">  </span><br><span class="line">/**  </span><br><span class="line"> * @description 几个set的比较  </span><br><span class="line"> *    HashSet：哈希表是通过使用称为散列法的机制来存储信息的，元素并没有以某种特定顺序来存放；  </span><br><span class="line"> *    LinkedHashSet：以元素插入的顺序来维护集合的链接表，允许以插入的顺序在集合中迭代；  </span><br><span class="line"> *    TreeSet：提供一个使用树结构存储Set接口的实现，对象以升序顺序存储，访问和遍历的时间很快。  </span><br><span class="line"> * @author Zhou-Jingxian  </span><br><span class="line"> *  </span><br><span class="line"> */  </span><br><span class="line">public class SetDemo &#123;  </span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;  </span><br><span class="line">  </span><br><span class="line">        HashSet&lt;String&gt; hs = new HashSet&lt;String&gt;();  </span><br><span class="line">        hs.add(&quot;B&quot;);  </span><br><span class="line">        hs.add(&quot;A&quot;);  </span><br><span class="line">        hs.add(&quot;D&quot;);  </span><br><span class="line">        hs.add(&quot;E&quot;);  </span><br><span class="line">        hs.add(&quot;C&quot;);  </span><br><span class="line">        hs.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;HashSet 顺序:\n&quot;+hs);  </span><br><span class="line">          </span><br><span class="line">        LinkedHashSet&lt;String&gt; lhs = new LinkedHashSet&lt;String&gt;();  </span><br><span class="line">        lhs.add(&quot;B&quot;);  </span><br><span class="line">        lhs.add(&quot;A&quot;);  </span><br><span class="line">        lhs.add(&quot;D&quot;);  </span><br><span class="line">        lhs.add(&quot;E&quot;);  </span><br><span class="line">        lhs.add(&quot;C&quot;);  </span><br><span class="line">        lhs.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;LinkedHashSet 顺序:\n&quot;+lhs);  </span><br><span class="line">          </span><br><span class="line">        TreeSet&lt;String&gt; ts = new TreeSet&lt;String&gt;();  </span><br><span class="line">        ts.add(&quot;B&quot;);  </span><br><span class="line">        ts.add(&quot;A&quot;);  </span><br><span class="line">        ts.add(&quot;D&quot;);  </span><br><span class="line">        ts.add(&quot;E&quot;);  </span><br><span class="line">        ts.add(&quot;C&quot;);  </span><br><span class="line">        ts.add(&quot;F&quot;);  </span><br><span class="line">        System.out.println(&quot;TreeSet 顺序:\n&quot;+ts);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashSet 顺序:[D, E, F, A, B, C]</span><br><span class="line">LinkedHashSet 顺序:[B, A, D, E, C, F]</span><br><span class="line">TreeSet 顺序:[A, B, C, D, E, F]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Iterator和ListIterator"><a href="#Iterator和ListIterator" class="headerlink" title="Iterator和ListIterator"></a>Iterator和ListIterator</h2><p>​     我们在使用 List，Set 的时候，为了实现对其数据的遍历，我们经常使用到了 Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List 和 Set 都有 iterator() 来取得其迭代器。对 List 来说，你也可以通过 listIterator() 取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator 和 ListIterator 主要区别在以下方面：</p>
+<ol>
+<li>ListIterator 有 add() 方法，可以向 List 中添加对象，而 Iterator 不能</li>
+<li>ListIterator 和 Iterator 都有 hasNext() 和 next() 方法，可以实现顺序向后遍历，但是 ListIterator 有 hasPrevious() 和 previous() 方法，可以实现逆向（顺序向前）遍历。Iterator 就不可以。</li>
+<li>ListIterator 可以定位当前的索引位置，nextIndex() 和 previousIndex() 可以实现。Iterator 没有此功能。</li>
+<li>都可实现删除对象，但是 ListIterator 可以实现对象的修改，set() 方法可以实现。Iierator 仅能遍历，不能修改。因为 ListIterator 的这些功能，可以实现对 LinkedList 等 List 数据结构的操作。其实，数组对象也可以用迭代器来实现。</li>
+</ol>
+<h2 id="Collection和Collections"><a href="#Collection和Collections" class="headerlink" title="Collection和Collections"></a>Collection和Collections</h2><ol>
+<li><p>java.util.Collection 是一个集合接口（集合类的一个顶级接口）。它提供了对集合对象进行基本操作的通用接口方法。Collection 接口在 Java 类库中有很多具体的实现。Collection 接口的意义是为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有 List 与 Set。</p>
+<p> Collection<br>├List   </p>
+<pre><code>│├LinkedList   
+│├ArrayList   
+│└Vector   
+│　└Stack   </code></pre><p>└Set </p>
+</li>
+<li><p>java.util.Collections 是一个包装类（工具类 / 帮助类）。它包含有各种有关集合操作的<strong>静态多态方法</strong>。此类<strong>不能实例化</strong>，就像一个工具类，用于对集合中元素进行排序、搜索以及线程安全等各种操作，服务于 Java 的 Collection 框架。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList; </span><br><span class="line">import java.util.Collections; </span><br><span class="line">import java.util.List; </span><br><span class="line">  </span><br><span class="line">public class TestCollections &#123; </span><br><span class="line">      </span><br><span class="line">    public static void main(String args[]) &#123; </span><br><span class="line">        //注意List是实现Collection接口的 </span><br><span class="line">        List list = new ArrayList(); </span><br><span class="line">        double array[] = &#123; 112, 111, 23, 456, 231 &#125;; </span><br><span class="line">        for (int i = 0; i &lt; array.length; i++) &#123; </span><br><span class="line">            list.add(new Double(array[i])); </span><br><span class="line">        &#125; </span><br><span class="line">        Collections.sort(list); </span><br><span class="line">        for (int i = 0; i &lt; array.length; i++) &#123; </span><br><span class="line">            System.out.println(list.get(i)); </span><br><span class="line">        &#125; </span><br><span class="line">        // 结果：23.0 111.0 112.0 231.0 456.0 </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="小细节-逐渐补充"><a href="#小细节-逐渐补充" class="headerlink" title="小细节(逐渐补充)"></a>小细节(逐渐补充)</h1><ol>
+<li>在源码的体现中, HashSet继承了Set, Cloneable, Serializable接口, 而在ArrayList比 HashSet多继承了一个RandomAccess接口, 这个接口的官方解释为 : RandomAccess是一个标志接口, 实现这个接口的List集合支持快速随机访问, 同时实现了这个接口的List, 使用for循环的方式获取数据会优于用迭代器获取数据. 经过测试, 两者之间性能的测试差距不是很大, 在数据量不大的情况下, 可以不考虑.</li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/19/集合/" data-id="ck1lio3t80001lwv75z3oqmea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/01/Java多线程小结/">Java多线程小结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/19/集合/">集合小结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
