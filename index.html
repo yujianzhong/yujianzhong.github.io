@@ -387,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/01/Java多线程小结/" data-id="ck1lio3sr0000lwv7gbjkmbs1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/01/Java多线程小结/" data-id="ck1n8p2i3000270v7qrrwzml3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -707,7 +707,71 @@ Java 提供了一个 Comparable 接口，该接口里定义了一个 compareTo(O
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/19/集合/" data-id="ck1lio3t80001lwv75z3oqmea" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/19/集合/" data-id="ck1n8p2hg000170v72ftj5cv8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JVM内存结构, Java内存模型, Java对象模型小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/18/JVM内存结构, Java内存模型, Java对象模型小结/" class="article-date">
+  <time datetime="2019-09-18T05:25:33.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/18/JVM内存结构, Java内存模型, Java对象模型小结/">JVM内存结构, Java内存模型, Java对象模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JVM内存结构-Java内存模型-Java对象模型"><a href="#JVM内存结构-Java内存模型-Java对象模型" class="headerlink" title="JVM内存结构, Java内存模型, Java对象模型"></a>JVM内存结构, Java内存模型, Java对象模型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述 :"></a>概述 :</h2><p>​    Java作为一种面向对象的, 可以跨平台运行的编程语言, 其对象, 内存等内容一致是比较难理解到位的知识点, 而很多概念的名称猛一看起来还那么的相似, 很多人就会傻傻分不清哪个是哪个, 所以在这里用一点文字来讨论一下JVM内存结构, Java内存模型, Java对象模型</p>
+<p>​    首先我们要知道的是, <strong>JVM内存结构</strong>, <strong>Java内存模型</strong>, <strong>Java对象模型</strong>, 这是三个<strong>完全不同</strong>的概念.</p>
+<h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p>​    我们都知道, Java代码是要运行在虚拟机上的, 而虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域, 这些区域都有着各自的用途. </p>
+<p>​    在这些区域中 , 有些区域随着虚拟机进程的启动而存在, 而在有些区域则依赖用户线程的启动和结束而建立和销毁. 在《Java虚拟机规范(Java SE 8) 》中是这么描述JVM运行时的内存区域结构的:</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/6fuT3emWI5IUn7IK1IHXbPncn0qUVqFDPOXDhD9dqSdaMa09ibl7QBFXBZgQ0C7vvb0UUAO3zqszZlNVcPBrMgg/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>​    对于各个区域的功能在这里就不再赘述了, 这里主要说几个需要特别注意的点:</p>
+<p>​        1&gt; 以上是Java虚拟机规范,  不同的虚拟机实现会有区别, 但是一般会遵守此规范</p>
+<p>​        2&gt; 规范中定义的方法区, 只是一种<strong>概念</strong>上的区域, 并说明了其应该具有说明功能, 但是并没有规定这个区域应该处于何处, 所以对于不同的虚拟机实现来说, 是具有一定的自由度的.</p>
+<p>​        3&gt; 不同版本的方法区所处的位置是不同的, 上图中的划分是<strong>逻辑区域</strong>, 并不是绝对意义上的物理区域. 因为某些版本的JDK中方法区其实是在堆中实现的</p>
+<p>​        4&gt; 运行时常量池用于存放编译器生成的各种字面常量和符号应用, 但是Java语言并不要求车行量只有在编译期才能产生, 比如在运行期, String.intern也会把新的常量放入池中</p>
+<p>​        5&gt; 除了以上介绍的JVM运行时内存外, 还有一块内存区域可供使用, 那就是<strong>直接内存</strong>, Java迅疾规范并没有定义这块内存区域, 所以他并不是由JVM管理, 是<strong>利用本地方法库直接在堆外申请的内存区域</strong>.</p>
+<p>​        6&gt; 堆和栈的数据划分也不是绝对的, 如HotSpot的JIT会针对对象分配做响应的优化</p>
+<p>​    如上, 做个总结, JVM内存结构是由Java虚拟机规范定义, 描述的是Java程序执行过程中, 由JVM管理的不同数据区域, 各个区域有其特定的功能.</p>
+<h3 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h3><p>​    Java内存模型看上去和Java内存结构(JVM内存结构)差不多, 很多人都会误以为两者是一回事儿.其实不然.</p>
+<p>​    在前面的关于JVM的内存结构的图中, 我们可以看到, 其中Java堆和方法区的区域是多个线程共享的数据区域, 也就是说, 多个线程可以操作保存在堆或是方法区中的同一个数据, 这也就是我们常说的”Java的线程间通过共享内存进行通信”.</p>
+<p>​    Java内存模型是根据英文Java Memory Model(JMM)翻译得来, 其实JMM并不像JVM内存结构一样是真实存在的, 他只是一个抽象的概念, JMM是和多线程相关的, 它描述了一组规则或是规范, 这个规范定义了一个线程对共享变量的写入时对另一个线程是可见的.</p>
+<p>​    所以, 简单的总结来说, Java的多线程之间是通过共享内存进行通信的, 而采用共享内存进行通信, 在通信的过程中会存在一系列如<strong>可见性, 原子性, 顺序性</strong>等问题, 而JMM就是围绕多线程通信及其相关的一系列特性而建立的模型, JMM定义了一些<strong>语法集</strong>, 这些语法集映射到Java语言中就是<strong>volatile, synchronized</strong>等关键字.</p>
+<p>​    在JMM中, 我们把多个线程间通信的共享内存称为主内存, 而在并发编程中多个线程都维护了一个自己的本地内存(<strong>抽象概念</strong>), 其中保存的数据就是主内存中的数据拷贝, 而JMM主要是控制本地内存和主内存之间的数据交互.</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/6fuT3emWI5IUn7IK1IHXbPncn0qUVqFDISlBmo2qybFM7JhbWt1SKicU3Tqd1myTXKy91aUicjawZRyOYunLB17w/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>​    在Java中, JMM是一个非常重要的概念, 正是由于有了JMM, Java的并发编程才能避免很多问题,  这些就不在这里赘述了.</p>
+<h2 id="java对象模型"><a href="#java对象模型" class="headerlink" title="java对象模型"></a>java对象模型</h2><p>​    Java是一种面向对象的语言, 而Java对象在JVM中的存储也是有一定的结构的, 而这个关于Java对象自身的存储模型称为<strong>Java对象模型</strong>.</p>
+<p>​    HotSpot虚拟机中, 设计了一个<strong>OOP-Klass Model</strong>, OOP(Ordinary Object Pointer)指的是普通对象指针, 而Klass用来描述对象实例的具体类型</p>
+<p>​    每一个Java类在被JVM加载的时候, JVM会给这个类创建一个instanceKlass, 保存在方法区, 用来在JVM层表示该Java类, 当我们在Java代码中, 使用new关键字创建一个对象的时候, JVM会创建一个instanceOopDesc对象, 这个对象就包含了对象头以及实例数据</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/6fuT3emWI5IUn7IK1IHXbPncn0qUVqFDqcEAdRUkia8yax6Ijr8Q8f0omsf7Eq0HcibyUQXViaDydhXiaIicvbTfJ4g/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>​    上图就是一个简单的Java对象的OOP-Klass模型, 即Java对象模型.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    JVM内存结构, 和Java虚拟机的运行时区域有关</p>
+<p>​    Java内存模型, 和Java的并发编程有关</p>
+<p>​    Java对象模型, 和Java对象在虚拟机中的表现形式有关.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/18/JVM内存结构, Java内存模型, Java对象模型小结/" data-id="ck1n8p2h6000070v74lbzope6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -753,6 +817,10 @@ Java 提供了一个 Comparable 接口，该接口里定义了一个 compareTo(O
         
           <li>
             <a href="/2019/09/19/集合/">集合小结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/18/JVM内存结构, Java内存模型, Java对象模型小结/">JVM内存结构, Java内存模型, Java对象模型</a>
           </li>
         
       </ul>
